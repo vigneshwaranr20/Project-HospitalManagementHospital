@@ -1,0 +1,8 @@
+com\hospitalManagement\entity\PaymentEntity.class
+com\hospitalManagement\entity\DoctorEntity.class
+com\hospitalManagement\repository\PatientRepository.class
+com\hospitalManagement\controller\PatientContrller.class
+com\hospitalManagement\Springproject1Application.class
+com\hospitalManagement\entity\HistoryEntity.class
+com\hospitalManagement\entity\PatientEntity.class
+com\hospitalManagement\serviceimpl\PatientServiceImpl.class

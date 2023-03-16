@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<script
+	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<link
+	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+	rel="stylesheet"
+	integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+	crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+<script
+	src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
+	integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
+	crossorigin="anonymous"></script>
+<link rel="stylesheet" type="text/css"
+	href="D:\my frontend mini project\style1.css">
+<title>Smart Hospital</title>
+<style type="text/css">
+* {
+	margin: 0;
+	padding: 0;
+}
+
+.container1 {
+	width: 100%;
+	height: 1080px;
+	background: #FFFFFF 0% 0% no-repeat padding-box;
+	opacity: 1;
+	position: absolute;
+}
+
+.header1 {
+	width: 100%;
+	height: 100px;
+	position: fixed;
+	background-color: #FFFFFF;
+	z-index: 30;
+}
+
+.header1 img {
+	top: 23px;
+	left: 277px;
+	width: 150px;
+	height: 52px;
+	border: 3px solid #1580EB;
+	opacity: 1;
+	position: absolute;
+}
+
+#button1 {
+	position: absolute;
+	top: 38px;
+	left: 966px;
+	width: 112px;
+	height: 22px;
+	text-align: left;
+	font: normal normal normal 20px/23px Arial;
+	letter-spacing: 0px;
+	color: #2C2C2C;
+	opacity: 1;
+	background: none;
+	border: none;
+}
+
+#button2 {
+	position: absolute;
+	top: 38px;
+	left: 1133px;
+	width: 129px;
+	height: 22px;
+	/* UI Properties */
+	text-align: left;
+	font: normal normal normal 20px/23px Arial;
+	letter-spacing: 0px;
+	color: #2C2C2C;
+	opacity: 1;
+	background: none;
+	border: none;
+}
+
+#button3 {
+	position: absolute;
+	top: 29px;
+	left: 1318px;
+	width: 135px;
+	height: 40px;
+	/* UI Properties */
+	background: #1580EB 0% 0% no-repeat padding-box;
+	border: 1px solid #1580EB;
+	opacity: 1;
+	color: #FFFFFF;
+	    font: normal normal normal 20px/23px Arial;
+}
+
+#button3a {
+	top: 29px;
+	left: 1508px;
+	width: 135px;
+	height: 40px;
+	/* UI Properties */
+	background: #1580EB 0% 0% no-repeat padding-box;
+	opacity: 1;
+	position: absolute;
+	border: none;
+	color: #FFFFFF;
+	    font: normal normal normal 20px/23px Arial;
+}
+
+.registerform {
+	top: 177px;
+	left: 277px;
+	width: 700px;
+	height: 466px;
+	/* UI Properties */
+	background: #1580EB 0% 0% no-repeat padding-box;
+	border: 1px solid #707070;
+	opacity: 1;
+	position: absolute;
+	left: 277px;
+	width: 700px;
+	height: 466px;
+	/* UI Properties */
+	background: #1580EB 0% 0% no-repeat padding-box;
+	border: 1px solid #707070;
+}
+
+.regtitlea {
+	position: absolute;
+	top: 26px;
+	left: 295px;
+	width: 110px;
+	height: 39px;
+	/* UI Properties */
+	text-align: left;
+	font: normal normal normal 30px/39px Roboto;
+	letter-spacing: 0px;
+	color: #FFFFFF;
+	opacity: 1;
+	font-family: 'Roboto', sans-serif;
+}
+
+#form1 {
+	position: absolute;
+	top: 84px;
+	left: 38px;
+	width: 615px;
+	height: 60px;
+	/* UI Properties */
+	border: 1px solid #FFFFFF;
+	opacity: 1;
+	background: none;
+	color: #FFFFFF;
+}
+
+#form2 {
+	position: absolute;
+	top: 164px;
+	left: 38px;
+	width: 615px;
+	height: 60px;
+	border: 1px solid #FFFFFF;
+	opacity: 1;
+	background: none;
+	color: #FFFFFF;
+}
+
+#form3 {
+	position: absolute;
+	top: 244px;
+	left: 38px;
+	width: 615px;
+	height: 60px;
+	border: 1px solid #FFFFFF;
+	opacity: 1;
+	background: none;
+	color: #FFFFFF;
+}
+
+#form4 {
+	position: absolute;
+	top: 343px;
+	left: 38px;
+	width: 208px;
+	height: 61px;
+	background: #1580EB 0% 0% no-repeat padding-box;
+	border: 1px solid #FFFFFF;
+	opacity: 1;
+	color: #FFFFFF;
+	opacity: 1;
+	font-family: 'Roboto', sans-serif;
+}
+
+#form5 {
+	position: absolute;
+	top: 343px;
+	left: 445px;
+	width: 208px;
+	height: 61px;
+	color: #174FAC;
+	border: 1px solid #FFFFFF;
+	opacity: 1;
+	background-color: white;
+	font-family: 'Roboto', sans-serif;
+}
+
+::-webkit-input-placeholder { /* Edge */
+	color: #FFFFFF;
+}
+
+:-ms-input-placeholder { /* Internet Explorer */
+	color: #FFFFFF;
+}
+
+::placeholder {
+	color: #FFFFFF;
+}
+
+input::placeholder {
+	position: absolute;
+	left: 25px;
+	top: 17px;
+}
+
+.appointmentimage {
+	top: 130px;
+	left: 886px;
+	width: 756px;
+	height: 561px;
+	/* UI Properties */
+	background: transparent url('img/Rectangle 23.png') 0% 0% no-repeat
+		padding-box;
+	border: 1px solid #707070;
+	opacity: 1;
+	position: absolute;
+	left: 886px;
+}
+
+.footer1 {
+	top: 930px;
+	left: 0px;
+	width: 100%;
+	height: 150px;
+	background: #2A282F 0% 0% no-repeat padding-box;
+	border: 1px solid #707070;
+	opacity: 1;
+	position: absolute;
+}
+#message{
+    position: absolute;
+    top: 303px;
+    left: 38px;
+    width: 133px;
+    height: 30px;
+
+}
+
+</style>
+</head>
+<body>
+	<div class="container1">
+		<div class="header1">
+			<a href="http://localhost:8080/hospital/patients"> <img	src="https://storage.googleapis.com/smco-web-static-assets/TraineeProject/logo-png.png"></a>
+			<a href="http://localhost:8080/hospital/appointment"><button id="button1">Appointment</button> </a> 
+			<a href="http://localhost:8080/hospital/PatientDetails"><button	id="button2">Patient Details</button></a> 
+			<a href="http://localhost:8080/hospital/Register"><button id="button3">Register</button></a> 
+			<a href="http://localhost:8080/hospital/Login"><button id="button3a">Login</button></a>
+		</div>
+			<div class="appointmentimage">
+				<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.healthworkscollective.com%2Fthe-importance-of-being-on-time-for-an-hospital-appointment%2F&psig=AOvVaw3PY3fyozUC_b_msUfad9kZ&ust=1678770443546000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPCN47GR2P0CFQAAAAAdAAAAABAL">
+			</div>
+		<div class="registerform">
+				<div class="regtitlea">
+					<p>Register</p>
+			    </div>
+			<form class="registration">
+				<input type="number" id="form1" placeholder="Mobile Number" required>
+			    <input id="form2" type="password" onkeyup='check();' placeholder="create password">
+                <input type="password" id="form3"  onkeyup='check();' placeholder="confirm password">
+                <span id='message'></span> 
+				<input type="reset"id="form4" value="cancel" required> 
+				<input type="submit" id="form5" value="Save" onclick="dataFilter()">
+			</form>
+		</div>
+		<div class="footer1"></div>
+	</div>
+	 <script type="text/javascript">
+		function dataFilter() {
+			debugger;
+			
+			var MobileNumber = document.getElementById("form1").value;
+			var createpassword = document.getElementById("form2").value;
+			var confirmpassword = document.getElementById("form3").value;
+			
+			var data = {mobile_number : MobileNumber,create_password : createpassword,confirm_password : confirmpassword};
+			$.ajax({
+				type : "POST",
+				headers : {
+					'Content-Type' : 'application/json'
+				},
+				url : "/hospital/Register", //this is my servlet
+				data : JSON.stringify(data),
+				// cache: false,
+				// async: false,
+				success : function(response) {
+					console.log("hiii");
+				}
+			});
+		}
+	</script>
+	<script>
+		var check = function() {
+			if (document.getElementById('form2').value == document
+					.getElementById('form3').value) {
+				document.getElementById('message').style.color = 'green';
+				document.getElementById('message').innerHTML = 'Password correct';
+			} else {
+				document.getElementById('message').style.color = 'red';
+				document.getElementById('message').innerHTML = 'Password incorrect';
+			}
+		}
+	</script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+</html>
