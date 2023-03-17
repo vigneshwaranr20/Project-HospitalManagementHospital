@@ -114,7 +114,7 @@
 	font: normal normal normal 20px/23px Arial;
 }
 
-.table1 {
+#myTable {
 	top: 131px;
 	left: 277px;
 	width: 1366px;
@@ -128,42 +128,49 @@
 }
 
 .sortingicon1 {
-	position: absolute;
+	/* position: absolute; */
 	left: 110px;
 	font-size: 21px;
 	cursor: pointer;
 }
 
 .sortingicon2 {
-	position: absolute;
+	/* position: absolute; */
 	font-size: 21px;
 	left: 110px;
 	cursor: pointer;
 }
 
 .sortingicon3 {
-	position: absolute;
+	/* position: absolute; */
 	font-size: 21px;
 	left: 80px;
 	cursor: pointer;
 }
 
 .sortingicon4 {
-	position: absolute;
+	/* position: absolute; */
 	left: 40px;
 	font-size: 21px;
 	cursor: pointer;
 }
 
 .sortingicon5 {
-	position: absolute;
+	/* position: absolute; */
 	font-size: 21px;
 	left: 65px;
 	cursor: pointer;
 }
+.row1a {
+width: 1366px;
+height: 50px;
+/* UI Properties */
+background: #707070 0% 0% no-repeat padding-box;
+opacity: 1;
+}
 
 .row1 {
-	position: absolute;
+	/* position: absolute; */
 	top: 50px;
 	left: 0px;
 	width: 1366px;
@@ -177,12 +184,12 @@
 	color: #3F3F57;
 }
 .row2 {
-	position: absolute;
+	/* position: absolute; */
 	top: 100px;
 	left: 0px;
 	width: 1366px;
 	height: 50px;
-	background: #D8EAFA 0% 0% no-repeat padding-box;
+	background: #FFFFFF 0% 0% no-repeat padding-box;
 	border: 0.5px solid #707070;
 	opacity: 1;
 	text-align: left;
@@ -191,7 +198,7 @@
 	color: #3F3F57;
 }
 .row3 {
-	position: absolute;
+	/* position: absolute; */
 	top: 150px;
 	left: 0px;
 	width: 1366px;
@@ -205,12 +212,12 @@
 	color: #3F3F57;
 }
 .row4 {
-	position: absolute;
+	/* position: absolute; */
 	top: 200px;
 	left: 0px;
 	width: 1366px;
 	height: 50px;
-	background: #D8EAFA 0% 0% no-repeat padding-box;
+	background: #FFFFFF 0% 0% no-repeat padding-box;
 	border: 0.5px solid #707070;
 	opacity: 1;
 	text-align: left;
@@ -219,7 +226,7 @@
 	color: #3F3F57;
 }
 .row5{
-	position: absolute;
+	/* position: absolute; */
 	top: 250px;
 	left: 0px;
 	width: 1366px;
@@ -232,6 +239,7 @@
 	letter-spacing: 0px;
 	color: #3F3F57;
 }
+
 </style>
 
 </head>
@@ -249,61 +257,72 @@
 					id="button3a">Login</button></a>
 		</div>
 
-		<table class="table1">
-			<tr>
-				<th style="position: absolute; top: 16px; left: 39px;">Patient
-					Name <span class="material-symbols-outlined sortingicon1">
-						filter_list </span>
+		<table id="myTable">
+			<tr class = "row1a">
+				<th style="top: 16px; left: 39px; width: 101px;
+height: 17px;">Patient
+					Name <span onclick="sortTable(0)"
+					class="material-symbols-outlined sortingicon1"> filter_list
+				</span>
 				</th>
 
-				<th style="position: absolute; top: 16px; left: 339px;">Doctor
-					Name <span class="material-symbols-outlined sortingicon2">
-						filter_list </span>
+				<th style="top: 16px; left: 339px; width: 100px;
+height: 17px;">Doctor
+					Name <span onclick="sortTable(1)"
+					class="material-symbols-outlined sortingicon2"> filter_list
+				</span>
 				</th>
-				<th style="position: absolute; top: 16px; left: 768px;">Specialist<span
+				<th style="top: 16px; left: 768px; width: 75px;
+height: 17px;">Specialist<span
+					onclick="sortTable(2)"
 					class="material-symbols-outlined sortingicon3">filter_list </span></th>
-				<th style="position: absolute; top: 16px; left: 1054px;">Date <span
+				<th style="top: 16px; left: 1054px; width: 35px;
+height: 17px;">Date
+					<span onclick="sortTable(3)"
 					class="material-symbols-outlined sortingicon4"> filter_list
-				</span></th>
-				<th style="position: absolute; top: 16px; left: 1237px;">Amount
-					<span class="material-symbols-outlined sortingicon5">
-						filter_list </span>
+				</span>
+				</th>
+				<th style="top: 16px; left: 1237px; width: 60px;
+height: 17px;">Amount
+					<span onclick="sortTable(4)"
+					class="material-symbols-outlined sortingicon5"> filter_list
+				</span>
 				</th>
 			</tr>
 			<tr class = "row1">
-				<td style ="position:absolute;top:16px;left:39px;">siva</td>
-				<td style ="position:absolute;top:16px;left:339px;">raj</td>
-				<td style ="position:absolute;top:16px;left:768px;">opthomoligist</td>
-				<td style ="position:absolute;top:16px;left:1054px;">2023-01-12</td>
-				<td style ="position:absolute;top:16px;left:1237px;">30000</td>
+				<td style ="/* position:absolute; */top:16px;left:39px;">siva</td>
+				<td style = "/* position:absolute; */top:16px; left:339px;">raj</td>
+				<td style = "/* position:absolute; */top:16px;left:768px;">opthomoligist</td>
+				<td style ="/* position:absolute; */top:16px;left:1054px;">2023-01-12</td>
+				<td style ="/* position:absolute; */top:16px;left:1237px;">30000</td>
 			</tr>
 			<tr class = "row2">
-				<td style ="position:absolute;top:16px;left:39px;">fayaz</td>
-				<td style ="position:absolute;top:16px;left:339px;">akash</td>
-				<td style ="position:absolute;top:16px;left:768px;">endocronoligist</td>
-				<td style ="position:absolute;top:16px;left:1054px;">2023-01-14</td>
-				<td style ="position:absolute;top:16px;left:1237px;">45000</td>
+				<td style ="/* position:absolute; */top:16px;left:39px;">fayaz</td>
+				<td style ="/* position:absolute; */top:16px;left:339px;">akash</td>
+				<td style ="/* position:absolute; */top:16px;left:768px;">endocronoligist</td>
+				<td style ="/* position:absolute; */top:16px;left:1054px;">2023-01-14</td>
+				<td style ="/* position:absolute; */top:16px;left:1237px;">45000</td>
 			</tr>
 			<tr class = "row3">
-				<td style ="position:absolute;top:16px;left:39px;">vky</td>
-				<td style ="position:absolute;top:16px;left:339px;">dhinesh</td>
-				<td style ="position:absolute;top:16px;left:768px;">dermotoloisgt</td>
-				<td style ="position:absolute;top:16px;left:1054px;">2023-01-20</td>
-				<td style ="position:absolute;top:16px;left:1237px;">25000</td>
+				<td style ="/* position:absolute; */top:16px;left:39px;">vky</td>
+				<td style ="/* position:absolute; */top:16px;left:339px;">dhinesh</td>
+				<td style ="/* position:absolute; */top:16px;left:768px;">dermotoloisgt</td>
+				<td style ="/* position:absolute; */top:16px;left:1054px;">2023-01-20</td>
+				<td style ="/* position:absolute; */top:16px;left:1237px;">25000</td>
 			</tr>
 			<tr class = "row4">
-				<td style ="position:absolute;top:16px;left:39px;">enamul</td>
-				<td style ="position:absolute;top:16px;left:339px;">anil</td>
-				<td style ="position:absolute;top:16px;left:768px;">endocronoligist</td>
-				<td style ="position:absolute;top:16px;left:1054px;">2023-01-22</td>
-				<td style ="position:absolute;top:16px;left:1237px;">4500</td>
+				<td style ="/* position:absolute; */top:16px;left:39px;">enamul</td>
+				<td style ="/* position:absolute; */top:16px;left:339px;">anil</td>
+				<td style ="/* position:absolute; */top:16px;left:768px;">endocronoligist</td>
+				<td style ="/* position:absolute; */top:16px;left:1054px;">2023-01-22</td>
+				<td style ="/* position:absolute; */top:16px;left:1237px;">4500</td>
 			</tr>
 
 
 		</table>
 		<script>
       function sortTable(n) {
-        debugger;
+        /* debugger; */
         var table, rows, switching, i, x, y, shouldSwitch, dir, switchcount = 0;
         table = document.getElementById("myTable");
         switching = true;
