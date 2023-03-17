@@ -4,6 +4,8 @@
 <meta charset="ISO-8859-1">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
+	<script src="https://kit.fontawesome.com/64d58efce2.js"
+	crossorigin="anonymous"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -212,6 +214,13 @@ input::placeholder {
 	opacity: 1;
 	position: absolute;
 }
+#loginToggle {
+    position: absolute;
+    top: 250px;
+    left: 630px;
+    color: white;
+    cursor:pointer;
+}
 </style>
 
 </head>
@@ -234,6 +243,7 @@ input::placeholder {
 			<form class="registration">
 				<input type="number" id="form1" placeholder="Mobile Number" required>
 				<input type="password" id="form2" placeholder="password" required>
+				<span id="loginPasswordSuccess" onclick="showPassword()"><i class="fa fa-eye toggle " id="loginToggle"></i></span>
 				
 				<input type="submit" id="form3" value="Login" required>
 			</form>
@@ -241,6 +251,18 @@ input::placeholder {
 
 		<div class="footer1"></div>
 	</div>
+	
+	<script>
+		function showPassword() {
+				var loginPassword = document.querySelector('#form2');
+				var loginToggle = document.querySelector("#loginToggle");
+			    // toggle the type attribute
+			    var type = loginPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+			    loginPassword.setAttribute('type', type);
+			    // toggle the eye slash icon
+			    loginToggle.classList.toggle('fa-eye-slash');
+			  }
+	</script>
 
 </body>
 </html>
