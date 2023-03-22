@@ -271,7 +271,7 @@ position: absolute;
 	<div class="container1">
 		<div class="header1">
 			<a href="http://localhost:8080/hospital/patients"> <img	src="https://storage.googleapis.com/smco-web-static-assets/TraineeProject/logo-png.png"></a>
-			<a href="http://localhost:8080/hospital/appointment"><button id="button1">Appointment</button> </a> 
+			<a href=""><button id="button1">Appointment</button> </a> 
 			<a href="http://localhost:8080/hospital/PatientDetails"><button	id="button2">Patient Details</button></a> 
 			<a href="http://localhost:8080/hospital/Register"><button id="button3">Register</button></a> 
 			<a href="http://localhost:8080/hospital/Login"><button id="button3a">Login</button></a>
@@ -285,9 +285,9 @@ position: absolute;
 			    </div>
 			<form class="registration">
 				<input type="number" id="form1" placeholder="Mobile Number" required>
-			    <input id="form2" type="password" onkeyup='check();' placeholder="create password">
+			    <input id="form2" type="password" onkeyup='check();' placeholder="create password" required>
 			    <span id="loginPasswordSuccess" onclick="showPassword()"><i class="fa fa-eye toggle " id="loginToggle"></i></span>
-                <input type="password" id="form3"  onkeyup='check();' placeholder="confirm password">
+                <input type="password" id="form3"  onkeyup='check();' placeholder="confirm password" required>
                 <span id='message'></span> 
 				<input type="reset"id="form4" value="cancel" required> 
 				<input type="submit" id="form5" value="Save" onclick="dataFilter()">
