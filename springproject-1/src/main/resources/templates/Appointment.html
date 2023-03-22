@@ -123,18 +123,19 @@
 }
 
 .registerform {
-	top: 206px;
-	left: 943px;
-	width: 700px;
-	height: 657px;
-	background: #1580EB 0% 0% no-repeat padding-box;
-	border: 1px solid #707070;
-	opacity: 1;
+top: 130px;
+left: 943px;
+width: 700px;
+height: 759px;
+/* UI Properties */
+background: #1580EB 0% 0% no-repeat padding-box;
+border: 1px solid #707070;
+opacity: 1;
 	position: absolute;
 }
 
 .appointmentimage {
-	top: 206px;
+	top: 195px;
 	left: 277px;
 	width: 672px;
 	height: 657px;
@@ -148,8 +149,8 @@
 
 .regtitlea {
 	position: absolute;
-	top: 26px;
-	left: 251px;
+	top: 35px;
+	left: 256px;
 	width: 248px;
 	height: 39px;
 	/* UI Properties */
@@ -163,8 +164,8 @@
 
 #form1 {
 	position: absolute;
-	top: 84px;
-	left: 38px;
+	top: 93px;
+	left: 43px;
 	width: 615px;
 	height: 60px;
 	/* UI Properties */
@@ -176,8 +177,8 @@
 
 #form2 {
 	position: absolute;
-	top: 164px;
-	left: 38px;
+	top: 173px;
+	left: 43px;
 	width: 615px;
 	height: 60px;
 	/* UI Properties */
@@ -189,8 +190,8 @@
 
 #form3 {
 	position: absolute;
-	top: 244px;
-	left: 38px;
+	top: 253px;
+	left: 43px;
 	width: 615px;
 	height: 60px;
 	/* UI Properties */
@@ -202,8 +203,8 @@
 
 #form4 {
 	position: absolute;
-	top: 324px;
-	left: 38px;
+	top: 333px;
+	left: 43px;
 	width: 295px;
 	height: 60px;
 	/* UI Properties */
@@ -215,8 +216,8 @@
 
 #form5 {
 	position: absolute;
-	top: 324px;
-	left: 358px;
+	top: 333px;
+	left: 363px;
 	width: 295px;
 	height: 60px;
 	border: 1px solid #FFFFFF;
@@ -227,8 +228,8 @@
 
 #form6 {
 	position: absolute;
-	top: 404px;
-	left: 38px;
+	top: 413px;
+	left: 43px;
 	width: 615px;
 	height: 60px;
 	/* UI Properties */
@@ -238,23 +239,24 @@
 	color: #FFFFFF;
 }
 
-#form7 {
+#form7{
 	position: absolute;
-	top: 484px;
-	left: 38px;
+	top: 493px;
+	left: 43px;
 	width: 615px;
 	height: 60px;
 	/* UI Properties */
 	border: 1px solid #FFFFFF;
 	opacity: 1;
 	background: none;
-	color: #FFFFFF;
+	color: #FFFFFF; 
+	cursor:pointer;
 }
 
 #form8 {
 	position: absolute;
-	top: 569px;
-	left: 38px;
+	top: 663px;
+	left: 43px;
 	width: 208px;
 	height: 61px;
 	/* UI Properties */
@@ -268,7 +270,7 @@
 
 #form9 {
 	position: absolute;
-	top: 569px;
+	top: 663px;
 	left: 445px;
 	width: 208px;
 	height: 61px;
@@ -279,6 +281,19 @@
 	background-color: white;
 	font-family: 'Roboto', sans-serif;
 }
+#form10 {
+	position: absolute;
+	top: 573px;
+	left: 43px;
+	width: 615px;
+	height: 60px;
+	/* UI Properties */
+	border: 1px solid #FFFFFF;
+	opacity: 1;
+	background: none;
+	color: #FFFFFF;
+	cursor:pointer;
+	}
 
 .footer1 {
 	top: 930px;
@@ -308,6 +323,13 @@ input::placeholder {
 	left: 25px;
 	top: 17px;
 }
+input::value {
+	position: absolute;
+	left: 25px;
+	top: 17px;
+}
+
+
 
 </style>
 </head>
@@ -344,7 +366,22 @@ input::placeholder {
 				<input type="number" id="form4" placeholder="Patient Age" required> 
 				<input type="datetime-local"id="form5" placeholder="Date & Time">
 				<input type="text" id="form6"	placeholder="Patient Address" required> 
-				<input type="text" id="form7" placeholder="Specialist" required> 
+				<select placeholder="Specialist" id="form7">
+				<option style="background: white;color:black;" value="" disabled selected>Specialist</option>
+				 <option style="background: white;color:black;" value="Cardiologists">Cardiologists</option>
+				  <option style="background: white;color:black;" value="Dermatologists">Dermatologists</option>
+				  <option style="background: white;color:black;" value="Endocrinologists">Endocrinologists</option>
+				  <option style="background: white;color:black;" value="Pediatricians">Pediatricians</option>
+				  <option style="background: white;color:black;" value="General Surgeons">General Surgeons</option>
+				</select>
+				<select placeholder="Doctor Name" id="form10">
+				<option value="" disabled selected>Doctor Name</option>
+				 <option style="background: white;color:black;" value="Akash">Akash</option>
+				  <option style="background: white;color:black;  " value="Praveen">Praveen</option>
+				  <option style="background: white;color:black;" value="anil">anil</option>
+				  <option style="background: white;color:black;" value="dhinesh">Pediatricians</option>
+				  <option style="background: white;color:black;" value="Mani">Mani </option>
+				</select> 
 				<input type="reset" id="form8" value="cancel" required> 
 				<input type="submit" id="form9" value="Schedule" required>
 			</form>

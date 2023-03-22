@@ -18,6 +18,7 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css"
 	href="D:\my frontend mini project\style1.css">
+	<script src="form-validation.js"></script>
 <title>Smart Hospital</title>
 <style type="text/css">
 * {
@@ -283,7 +284,7 @@ position: absolute;
 				<div class="regtitlea">
 					<p>Register</p>
 			    </div>
-			<form class="registration">
+			<div class="registration"id="registrationForm" >
 				<input type="number" id="form1" placeholder="Mobile Number" required>
 			    <input id="form2" type="password" onkeyup='check();' placeholder="create password" required>
 			    <span id="loginPasswordSuccess" onclick="showPassword()"><i class="fa fa-eye toggle " id="loginToggle"></i></span>
@@ -291,7 +292,7 @@ position: absolute;
                 <span id='message'></span> 
 				<input type="reset"id="form4" value="cancel" required> 
 				<input type="submit" id="form5" value="Save" onclick="dataFilter()">
-			</form>
+			</div>
 		</div>
 		<div class="footer1"></div>
 	</div>
@@ -314,7 +315,10 @@ position: absolute;
 				// cache: false,
 				// async: false,
 				success : function(response) {
-					console.log("hiii");
+					/* debugger; */
+					alert("You Mobile Number successfully Registred");
+					/* console.log("hiii"); */
+					window.location.href = "http://localhost:8080/hospital/Login?";
 				}
 			});
 		}
@@ -343,6 +347,32 @@ position: absolute;
 			    loginToggle.classList.toggle('fa-eye-slash');
 			  }
 	</script>
+	<!-- <script>
+     function registerUser() {
+  var name = document.getElementById("name").value.trim();
+  var password = document.getElementById("create password").value.trim();
+  var confirmPassword = document.getElementById("confirm password").value.trim();
+  
+  if (name == "" || password == "" || confirmPassword == "") {
+    alert("Please fill in all fields.");
+    return false;
+  }
+  
+  if (password != confirmPassword) {
+    alert("Passwords do not match.");
+    return false;
+  }
+  
+  // perform additional validation checks here as needed
+  
+  // registration successful, redirect to login page
+  
+  
+  // return false to prevent the form from being submitted
+  return false;
+}
+ -->
+  </script>
 
 
 
