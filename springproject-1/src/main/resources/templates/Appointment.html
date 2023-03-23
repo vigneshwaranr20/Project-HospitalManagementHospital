@@ -366,21 +366,16 @@ input::value {
 				<input type="number" id="form4" placeholder="Patient Age" required> 
 				<input type="datetime-local"id="form5" placeholder="Date & Time">
 				<input type="text" id="form6"	placeholder="Patient Address" required> 
-				<select placeholder="Specialist" id="form7">
+				<select placeholder="Specialist" id="form7" >
 				<option style="background: white;color:black;" value="" disabled selected>Specialist</option>
-				 <option style="background: white;color:black;" value="Cardiologists">Cardiologists</option>
+				 <option style="background: white;color:black;" value="Cardiologists">Cardiologists</option> 
 				  <option style="background: white;color:black;" value="Dermatologists">Dermatologists</option>
 				  <option style="background: white;color:black;" value="Endocrinologists">Endocrinologists</option>
 				  <option style="background: white;color:black;" value="Pediatricians">Pediatricians</option>
 				  <option style="background: white;color:black;" value="General Surgeons">General Surgeons</option>
 				</select>
 				<select placeholder="Doctor Name" id="form10">
-				<option value="" disabled selected>Doctor Name</option>
-				 <option style="background: white;color:black;" value="Akash">Akash</option>
-				  <option style="background: white;color:black;  " value="Praveen">Praveen</option>
-				  <option style="background: white;color:black;" value="anil">anil</option>
-				  <option style="background: white;color:black;" value="dhinesh">Pediatricians</option>
-				  <option style="background: white;color:black;" value="Mani">Mani </option>
+				 <option value="" disabled selected>Doctor Name</option> 
 				</select> 
 				<input type="reset" id="form8" value="cancel" required> 
 				<input type="submit" id="form9" value="Schedule" required>
@@ -392,5 +387,45 @@ input::value {
 
 
 	</div>
+	
+	<script > 
+    $(document).ready(function()
+    {
+    $("#form7").change(function() 
+   	{
+    var Specialist = $(this).val();
+    if (Specialist == "")
+    {
+      $("#form10").prop("disabled", true);
+    } 
+    else 
+    {
+      $("#form10").prop("disabled", false);
+      
+      if (Specialist == "Dermatologists")
+      {
+        $("#form10").html("<option style='background: white;color:black;' value=''>--Select--</option><option style='background: white;color:black;' value='Akash'>Akash</option>");
+      } 
+      else if (Specialist == "Endocrinologists") 
+      {
+        $("#form10").html("<option style='background: white;color:black;' value=''>--Select--</option><option style='background: white;color:black;' value='Anil'>Anil</option><option style='background: white;color:black;' value='Dhinesh'>Dhinesh</option>");
+      }
+      else if (Specialist == "Cardiologists") 
+      {
+          $("#form10").html("<option style='background: white;color:black;' value=''>--Select--</option><option style='background: white;color:black;' value='Mani'>Mani</option><option style='background: white;color:black;' value='Logesh'>Logesh</option>");
+      }
+      else if (Specialist == "Pediatricians") 
+      {
+          $("#form10").html("<option style='background: white;color:black;' value=''>--Select--</option><option style='background: white;color:black;' value='Prakash'>Prakash</option>");
+      }
+      else if (Specialist == "General Surgeons") 
+      {
+          $("#form10").html("<option style='background: white;color:black;' value=''>--Select--</option><option style='background: white;color:black;' value='Praveen'>Praveen</option><option style='background: white;color:black;' value='Rajesh'>Rajesh</option>");           
+      }
+    }  
+  });
+    });
+</script>
+</body>
 </body>
 </html>

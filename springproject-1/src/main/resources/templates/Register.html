@@ -267,6 +267,69 @@ position: absolute;
 }
 
 </style>
+<script>
+	function dataFilter() {
+		debugger;
+		var MobileNumber = document.getElementById("form1").value;
+		var createpassword = document.getElementById("form2").value;
+		var confirmpassword = document.getElementById("form3").value;
+		
+		var data = {mobile_number : MobileNumber,create_password : createpassword,confirm_password : confirmpassword};
+			 console.log(data);
+			 debugger;
+			$.ajax({
+			
+			type : "POST",
+			headers : {
+			'Content-Type' : 'application/json'
+			},
+			url : "/hospital/Register", //this is my servlet
+			data : JSON.stringify(data),
+			dataType:'json',
+			success : function(response)
+			{
+			var receivedData=response;
+			console.log(receivedData);
+			if(receivedData.status=="201")
+			{
+			alert("Your Already Registered User Kindly Login ")
+			window.location.href = "http://localhost:8080/hospital/Login";
+			}
+			else
+			{
+			alert ("Your Id Registered Successfully");
+			console.log("hiii");
+			window.location.href = "http://localhost:8080/hospital/Appointment";
+			}
+			console.log(data);
+			},
+			error : function(jqXHR, exception) {
+			
+			}
+			});
+	}
+
+		 var check = function() {
+			if (document.getElementById('form2').value == document
+					.getElementById('form3').value) {
+				document.getElementById('message').style.color = 'green';
+				document.getElementById('message').innerHTML = 'Password correct';
+			} else {
+				document.getElementById('message').style.color = 'red';
+				document.getElementById('message').innerHTML = 'Password incorrect';
+			}
+		}
+	
+		function showPassword() {
+				var loginPassword = document.querySelector('#form2');
+				var loginToggle = document.querySelector("#loginToggle");
+			    // toggle the type attribute
+			    var type = loginPassword.getAttribute('type') === 'password' ? 'text' : 'password';
+			    loginPassword.setAttribute('type', type);
+			    // toggle the eye slash icon
+			    loginToggle.classList.toggle('fa-eye-slash');
+			  } 
+	</script>
 </head>
 <body>
 	<div class="container1">
@@ -296,99 +359,5 @@ position: absolute;
 		</div>
 		<div class="footer1"></div>
 	</div>
-	 <script type="text/javascript">
-		function dataFilter() {
-			debugger;
-			
-			var MobileNumber = document.getElementById("form1").value;
-			var createpassword = document.getElementById("form2").value;
-			var confirmpassword = document.getElementById("form3").value;
-			
-			var data = {mobile_number : MobileNumber,create_password : createpassword,confirm_password : confirmpassword};
-			$.ajax({
-				type : "POST",
-				headers : {
-					'Content-Type' : 'application/json'
-				},
-				url : "/hospital/Register", //this is my servlet
-				data : JSON.stringify(data),
-				// cache: false,
-				// async: false,
-				success : function(response) {
-					/* debugger; */
-					alert("You Mobile Number successfully Registred");
-					/* console.log("hiii"); */
-					window.location.href = "http://localhost:8080/hospital/Login?";
-				}
-			});
-		}
-	</script>
-	<script>
-		var check = function() {
-			if (document.getElementById('form2').value == document
-					.getElementById('form3').value) {
-				document.getElementById('message').style.color = 'green';
-				document.getElementById('message').innerHTML = 'Password correct';
-			} else {
-				document.getElementById('message').style.color = 'red';
-				document.getElementById('message').innerHTML = 'Password incorrect';
-			}
-		}
-	</script>
-	
-	<script>
-		function showPassword() {
-				var loginPassword = document.querySelector('#form2');
-				var loginToggle = document.querySelector("#loginToggle");
-			    // toggle the type attribute
-			    var type = loginPassword.getAttribute('type') === 'password' ? 'text' : 'password';
-			    loginPassword.setAttribute('type', type);
-			    // toggle the eye slash icon
-			    loginToggle.classList.toggle('fa-eye-slash');
-			  }
-	</script>
-	<!-- <script>
-     function registerUser() {
-  var name = document.getElementById("name").value.trim();
-  var password = document.getElementById("create password").value.trim();
-  var confirmPassword = document.getElementById("confirm password").value.trim();
-  
-  if (name == "" || password == "" || confirmPassword == "") {
-    alert("Please fill in all fields.");
-    return false;
-  }
-  
-  if (password != confirmPassword) {
-    alert("Passwords do not match.");
-    return false;
-  }
-  
-  // perform additional validation checks here as needed
-  
-  // registration successful, redirect to login page
-  
-  
-  // return false to prevent the form from being submitted
-  return false;
-}
- -->
-  </script>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 </body>
 </html>
