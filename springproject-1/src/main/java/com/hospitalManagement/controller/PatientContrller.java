@@ -1,5 +1,6 @@
 package com.hospitalManagement.controller;
 
+import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -48,6 +49,16 @@ public class PatientContrller {
 	public String listUsers2() {
 		return "Register";
 	}
+	@PostMapping("/Register")
+	@ResponseBody
+	public String insertData(@RequestBody Map<String, Object> patients) {
+		Map<String,Object> data= patientService.getAllPatients(patients);
+		String rs=new Gson().toJson(data);
+		logger.info("Check"+ rs);
+		return rs;
+		
+	}
+
 
 	@GetMapping("/Login")
 	public String listUsers3() {
@@ -59,29 +70,23 @@ public class PatientContrller {
 		return "PatientDetails";
 	}
 
-	@PostMapping("/doctor")
-	@ResponseBody
-	public String patient() {
-		logger.info("output");
-		Map<String, Object> history = patientService.getAllPatients();
-		String data = new Gson().toJson(history);
-		return data;
-	}
-
-	@PostMapping("/check")
-	@ResponseBody
-	public String queryResult() {
-		logger.info("check");
-		Map<String, Object> user = patientService.getPatients();
-		String data2 = new Gson().toJson(user);
-		return data2;
-	}
+//	@PostMapping("/doctor")
+//	@ResponseBody
+//	public String patient() {
+//		logger.info("output");
+//		Map<String, Object> history = patientService.getAllPatients();
+//		String data = new Gson().toJson(history);
+//		return data;
+//	}
+//
+//	@PostMapping("/check")
+//	@ResponseBody
+//	public String queryResult() {
+//		logger.info("check");
+//		Map<String, Object> user = patientService.getPatients();
+//		String data2 = new Gson().toJson(user);
+//		return data2;
+//	}
 	
-	@PostMapping("/Register")
-	public String insertData(@RequestBody Map<String, Object> patients) {
-		patientService.getAllPatients(patients);
-		return "Register";
-		
-	}
-
+	
 }

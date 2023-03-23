@@ -35,28 +35,35 @@ public class PatientServiceImpl {
 		List<Map<String, Object>> findData = patientRepository.queryResult();
 		p.put("patient_details", findData);
 		return p;
+		
 	}
 
 	
-	public Map<String , Object> getAllPatients(@RequestBody Map<String, Object> patients) {
+	public Map<String , Object> getAllPatients(@RequestBody Map<String, Object> patients)
+	{
 		Map<String ,Object> cs=new HashMap<>();
 		String number = (String) patients.get("mobile_number");
 		
-		long number2 = Long.valueOf(number);
+	
 		String createpassword = (String) patients.get("create_password");
 		String confirmpassword = (String) patients.get("confirm_password");
 
-//		logger.info("check" + number2);
-//		logger.info("check" + createpassword);
 
-		PatientEntity insert = new PatientEntity();
-		insert.setMobile_number(number2);
-		insert.setCreate_password(createpassword);
-		insert.setConfirm_password(confirmpassword);
-		PatientEntity sample = patientRepository.save(insert);
-		logger.info("data" + sample);
-		cs.put("datacheck", sample);                                
-		return  cs;
+		Long number2 = Long.valueOf(number);
+//		logger.info("Number" + number2);
+		List<Map<String, Object>> getData =patientRepository.getPhoneNumber(number2);
+	
+	       logger.info("result"+number2);
+	logger.info("check" + number);
+	if(getData.isEmpty())
+	{
+		patientRepository.insertPatient(number2, createpassword, confirmpassword);
+     	cs.put("Success", getData);
 	}
+	else {
+	cs.put("status","201");
+	}
+	return cs;
+	}
+}	
 
-}
