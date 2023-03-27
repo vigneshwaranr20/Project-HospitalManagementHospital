@@ -13,8 +13,8 @@ import com.hospitalManagement.entity.PatientEntity;
 
 public interface PatientRepository extends JpaRepository<PatientEntity, Integer> {
 
-	@Query(nativeQuery = true, value = "Select * from patient_details where mobile_number = '7397577541'")
-	public List<Map<String, Object>> queryResult();
+//	@Query(nativeQuery = true, value = "Select * from patient_details where mobile_number = '7397577541'")
+//	public List<Map<String, Object>> queryResult();
 
 	  @Modifying
 	  @Transactional
@@ -23,6 +23,13 @@ public interface PatientRepository extends JpaRepository<PatientEntity, Integer>
 	  
 	  @Query(value = "SELECT * FROM patient_details WHERE mobile_number=?1", nativeQuery = true)
      List< Map<String,Object>> getPhoneNumber(long number);
-
+	  
+	  @Query(value="Select * from patient_details where mobile_number=?1 && create_password=?2 ",nativeQuery = true)
+	  List < Map<String,Object>>getData(long mobile_number, String create_password);
+      
+	  
+	  @Query(value ="INSERT INTO patient_details(name, disease,gender,age,address,mobile_number) VALUES(?1,?2,?3,?4,?5,?6)", nativeQuery = true)
+	  void insertData (String name,String disease,String gender,int age,String address,Long mobile_number );
+	  
 
 }

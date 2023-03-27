@@ -1,6 +1,5 @@
 package com.hospitalManagement.controller;
 
-import java.util.List;
 import java.util.Map;
 
 import org.slf4j.Logger;
@@ -13,7 +12,6 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
-import com.hospitalManagement.entity.PatientEntity;
 import com.hospitalManagement.repository.PatientRepository;
 import com.hospitalManagement.serviceimpl.PatientServiceImpl;
 
@@ -64,12 +62,43 @@ public class PatientContrller {
 	public String listUsers3() {
 		return "Login";
 	}
-
+     
+	@PostMapping("/Login")
+	@ResponseBody
+	public String loginData(@RequestBody Map<String,Object> Register)
+	{
+		Map<String,Object> login=patientService.getAllData(Register);
+		String rs=new Gson().toJson(login);
+		logger.info(rs);
+		return rs;
+	}
 	@GetMapping("/PatientDetails")
 	public String listUsers4() {
 		return "PatientDetails";
 	}
-
+    
+	@PostMapping("/AllDoctorsDetails")
+	@ResponseBody
+	public String patient() {
+		logger.info("data");
+		Map<String, Object> allList = patientService.getData();
+//		logger.info('Map allList');
+		String data = new Gson().toJson(allList);
+		logger.info(data);
+		return data;
+	}
+	
+	@PostMapping("/Appointments")
+	@ResponseBody
+	public String Schedule (Map <String ,Object> Appointment) {
+		Map<String,Object> App=patientService.getAppointmentdata(Appointment);		
+		return null;
+		
+	}
+	
+	
+	
+	
 //	@PostMapping("/doctor")
 //	@ResponseBody
 //	public String patient() {
