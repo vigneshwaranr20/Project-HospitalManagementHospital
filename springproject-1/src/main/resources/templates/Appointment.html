@@ -328,6 +328,16 @@ input::value {
 	left: 25px;
 	top: 17px;
 }
+.appointmentimage img {
+position:absolute;
+
+width: 672px;
+height: 657px;
+/* UI Properties */
+background: transparent url('img/Rectangle 23.png') 0% 0% no-repeat padding-box;
+border: 1px solid #707070;
+opacity: 1;
+}
 
 
 
@@ -352,7 +362,7 @@ input::value {
 		</div>
 		<div class="appointmentimage">
 			<img
-				src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.healthworkscollective.com%2Fthe-importance-of-being-on-time-for-an-hospital-appointment%2F&psig=AOvVaw3PY3fyozUC_b_msUfad9kZ&ust=1678770443546000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPCN47GR2P0CFQAAAAAdAAAAABAL">
+				src="https://storage.googleapis.com/smco-web-static-assets/TraineeProject/vig2.png">
 		</div>
 
 		<div class="registerform">
@@ -426,6 +436,38 @@ input::value {
   });
     });
 </script>
-</body>
+<script type="text/javascript">
+    function dataFilter() {
+      debugger;
+      
+      var PatientMobileNumber = document.getElementById("form1").value;
+      var PatientName = document.getElementById("form2").value;
+      var Patientdisease = document.getElementById("form3").value;
+      var PatientAge = document.getElementById("form4").value;
+      var Date&Time = document.getElementById("form5").value;
+      var PatientAddress = document.getElementById("form6").value;
+      var Specialist = document.getElementById("form7").value;
+      var DoctorName = document.getElementById("form10").value;
+      v
+      
+      
+      var data = {mobile_number : PatientMobileNumber,name : PatientName,disease : Patientdisease,age:PatientAge,date&time:Date_&_Time,address:PatientAddress,Specialist:Specialist,doctor_name:DoctorName};
+      $.ajax({
+        type : "POST",
+        headers : {
+          'Content-Type' : 'application/json'
+        },
+        url : "/hospital/Appointment", //this is my servlet
+        data : JSON.stringify(data),
+        // cache: false,
+        // async: false,
+        success : function(response) {
+          console.log("hiii");
+        }
+      });
+    }
+  </script>
+
+
 </body>
 </html>

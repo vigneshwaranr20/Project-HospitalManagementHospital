@@ -4,8 +4,6 @@
 <meta charset="ISO-8859-1">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-	<script src="https://kit.fontawesome.com/64d58efce2.js"
-	crossorigin="anonymous"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
 	rel="stylesheet"
@@ -18,7 +16,6 @@
 	crossorigin="anonymous"></script>
 <link rel="stylesheet" type="text/css"
 	href="D:\my frontend mini project\style1.css">
-	<script src="form-validation.js"></script>
 <title>Smart Hospital</title>
 <style type="text/css">
 * {
@@ -94,7 +91,7 @@
 	border: 1px solid #1580EB;
 	opacity: 1;
 	color: #FFFFFF;
-	    font: normal normal normal 20px/23px Arial;
+	font: normal normal normal 20px/23px Arial;
 }
 
 #button3a {
@@ -108,7 +105,7 @@
 	position: absolute;
 	border: none;
 	color: #FFFFFF;
-	    font: normal normal normal 20px/23px Arial;
+	font: normal normal normal 20px/23px Arial;
 }
 
 .registerform {
@@ -250,66 +247,82 @@ input::placeholder {
 	opacity: 1;
 	position: absolute;
 }
-#message{
-    position: absolute;
-    top: 303px;
-    left: 38px;
-    width: 133px;
-    height: 30px;
 
-}
-#loginToggle {
-position: absolute;
-    top: 185px;
-    left: 620px;
-    color: white;
-    cursor:pointer;
+#message {
+	position: absolute;
+	top: 303px;
+	left: 38px;
+	width: 133px;
+	height: 30px;
 }
 
+.appointmentimage img {
+	position: absolute;
+	top: 0px;
+	left: 0px;
+	width: 757px;
+	height: 561px;
+	/* UI Properties */
+	background: transparent url('img/Rectangle 43.png') 0% 0% no-repeat
+		padding-box;
+	border: 1px solid #707070;
+	opacity: 1;
+}
 </style>
-<script>
-	function dataFilter() {
-		debugger;
-		var MobileNumber = document.getElementById("form1").value;
-		var createpassword = document.getElementById("form2").value;
-		var confirmpassword = document.getElementById("form3").value;
-		
-		var data = {mobile_number : MobileNumber,create_password : createpassword,confirm_password : confirmpassword};
-			 console.log(data);
-			 debugger;
+</head>
+<body>
+	<div class="container1">
+		<div class="header1">
+			<a href="http://localhost:8080/hospital/patients"> <img	src="https://storage.googleapis.com/smco-web-static-assets/TraineeProject/logo-png.png"></a>
+			<a href="http://localhost:8080/hospital/appointment"><button id="button1">Appointment</button> </a> 
+			<a href="http://localhost:8080/hospital/PatientDetails"><button	id="button2">Patient Details</button></a> 
+			<a href="http://localhost:8080/hospital/Register"><button id="button3">Register</button></a> 
+			<a href="http://localhost:8080/hospital/Login"><button id="button3a">Login</button></a>
+		</div>
+			<div class="appointmentimage">
+				<img src="https://storage.googleapis.com/smco-web-static-assets/TraineeProject/vig1.png">
+			</div>
+		<div class="registerform">
+				<div class="regtitlea">
+					<p>Register</p>
+			    </div>
+			<form class="registration">
+				<input type="number" id="form1" placeholder="Mobile Number" required>
+			    <input id="form2" type="password" onkeyup='check();' placeholder="create password">
+                <input type="password" id="form3"  onkeyup='check();' placeholder="confirm password">
+                <span id='message'></span> 
+				<input type="reset"id="form4" value="cancel" required> 
+				<input type="submit" id="form5" value="Save" onclick="dataFilter()">
+			</form>
+		</div>
+		<div class="footer1"></div>
+	</div>
+	 <script type="text/javascript">
+		function dataFilter() {
+			debugger;
+			
+			var MobileNumber = document.getElementById("form1").value;
+			var createpassword = document.getElementById("form2").value;
+			var confirmpassword = document.getElementById("form3").value;
+			
+			var data = {mobile_number : MobileNumber,create_password : createpassword,confirm_password : confirmpassword};
 			$.ajax({
-			
-			type : "POST",
-			headers : {
-			'Content-Type' : 'application/json'
-			},
-			url : "/hospital/Register", //this is my servlet
-			data : JSON.stringify(data),
-			dataType:'json',
-			success : function(response)
-			{
-			var receivedData=response;
-			console.log(receivedData);
-			if(receivedData.status=="201")
-			{
-			alert("Your Already Registered User Kindly Login ")
-			window.location.href = "http://localhost:8080/hospital/Login";
-			}
-			else
-			{
-			alert ("Your Id Registered Successfully");
-			console.log("hiii");
-			window.location.href = "http://localhost:8080/hospital/Appointment";
-			}
-			console.log(data);
-			},
-			error : function(jqXHR, exception) {
-			
-			}
+				type : "POST",
+				headers : {
+					'Content-Type' : 'application/json'
+				},
+				url : "/hospital/Register", //this is my servlet
+				data : JSON.stringify(data),
+				// cache: false,
+				// async: false,
+				success : function(response) {
+					console.log("hiii");
+				}
 			});
-	}
-
-		 var check = function() {
+		}
+	</script>
+	<script>
+		var check = function() {
 			if (document.getElementById('form2').value == document
 					.getElementById('form3').value) {
 				document.getElementById('message').style.color = 'green';
@@ -319,45 +332,23 @@ position: absolute;
 				document.getElementById('message').innerHTML = 'Password incorrect';
 			}
 		}
-	
-		function showPassword() {
-				var loginPassword = document.querySelector('#form2');
-				var loginToggle = document.querySelector("#loginToggle");
-			    // toggle the type attribute
-			    var type = loginPassword.getAttribute('type') === 'password' ? 'text' : 'password';
-			    loginPassword.setAttribute('type', type);
-			    // toggle the eye slash icon
-			    loginToggle.classList.toggle('fa-eye-slash');
-			  } 
 	</script>
-</head>
-<body>
-	<div class="container1">
-		<div class="header1">
-			<a href="http://localhost:8080/hospital/patients"> <img	src="https://storage.googleapis.com/smco-web-static-assets/TraineeProject/logo-png.png"></a>
-			<a href=""><button id="button1">Appointment</button> </a> 
-			<a href="http://localhost:8080/hospital/PatientDetails"><button	id="button2">Patient Details</button></a> 
-			<a href="http://localhost:8080/hospital/Register"><button id="button3">Register</button></a> 
-			<a href="http://localhost:8080/hospital/Login"><button id="button3a">Login</button></a>
-		</div>
-			<div class="appointmentimage">
-				<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.healthworkscollective.com%2Fthe-importance-of-being-on-time-for-an-hospital-appointment%2F&psig=AOvVaw3PY3fyozUC_b_msUfad9kZ&ust=1678770443546000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPCN47GR2P0CFQAAAAAdAAAAABAL">
-			</div>
-		<div class="registerform">
-				<div class="regtitlea">
-					<p>Register</p>
-			    </div>
-			<div class="registration"id="registrationForm" >
-				<input type="number" id="form1" placeholder="Mobile Number" required>
-			    <input id="form2" type="password" onkeyup='check();' placeholder="create password" required>
-			    <span id="loginPasswordSuccess" onclick="showPassword()"><i class="fa fa-eye toggle " id="loginToggle"></i></span>
-                <input type="password" id="form3"  onkeyup='check();' placeholder="confirm password" required>
-                <span id='message'></span> 
-				<input type="reset"id="form4" value="cancel" required> 
-				<input type="submit" id="form5" value="Save" onclick="dataFilter()">
-			</div>
-		</div>
-		<div class="footer1"></div>
-	</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </body>
 </html>

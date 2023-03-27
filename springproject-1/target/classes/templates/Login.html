@@ -135,7 +135,7 @@
 	font-family: 'Roboto', sans-serif;
 }
 
-#form1 {
+#form-1 {
 	position: absolute;
 	top: 147px;
 	left: 43px;
@@ -148,7 +148,7 @@
 	color: #FFFFFF;
 }
 
-#form2 {
+#form-2 {
 	position: absolute;
 	top: 227px;
 	left: 43px;
@@ -160,7 +160,7 @@
 	color: #FFFFFF;
 }
 
-#form3 {
+#form-3 {
 	position: absolute;
 	top: 317px;
 	left: 38px;
@@ -191,7 +191,7 @@ input::placeholder {
 	top: 17px;
 }
 
-.appointmentimage {
+.appointmentimage img {
 	top: 130px;
 	left: 277px;
 	width: 757px;
@@ -203,6 +203,7 @@ input::placeholder {
 	opacity: 1;
 	position: absolute;
 }
+.
 
 .footer1 {
 	top: 930px;
@@ -234,18 +235,18 @@ input::placeholder {
 			<a href="http://localhost:8080/hospital/Login"><button	id="button3a">Login</button></a>
 		</div>
 		<div class="appointmentimage">
-			<img src="https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.healthworkscollective.com%2Fthe-importance-of-being-on-time-for-an-hospital-appointment%2F&psig=AOvVaw3PY3fyozUC_b_msUfad9kZ&ust=1678770443546000&source=images&cd=vfe&ved=0CBAQjRxqFwoTCPCN47GR2P0CFQAAAAAdAAAAABAL">
+			<img src="https://storage.googleapis.com/smco-web-static-assets/TraineeProject/vig1.png">
 		</div>
 		<div class="registerform">
 			<div class="regtitlea">
 				<p>Login</p>
 			</div>
 			<form class="registration">
-				<input type="number" id="form1" placeholder="Mobile Number" required>
-				<input type="password" id="form2" placeholder="password" required>
+				<input type="number" id="form-1" placeholder="Mobile Number" required>
+				<input type="password" id="form-2" placeholder="password" required>
 				<span id="loginPasswordSuccess" onclick="showPassword()"><i class="fa fa-eye toggle " id="loginToggle"></i></span>
 				
-				<input type="submit" id="form3" value="Login" required>
+				<input type="submit" id="form-3" onclick="dataFilter()" value="Login" required>
 			</form>
 		</div>
 
@@ -262,6 +263,47 @@ input::placeholder {
 			    // toggle the eye slash icon
 			    loginToggle.classList.toggle('fa-eye-slash');
 			  }
+		function dataFilter() {
+			debugger;
+			var MobileNumber = document.getElementById("form-1").value;
+			var Password=document.getElementById("form-2").value;
+			var data =
+			{
+					"mobile_number" : MobileNumber,
+					"create_password" :Password
+				
+			};
+				 console.log(data);
+				 debugger;
+				$.ajax({
+				
+				type : "POST",
+				headers : {
+				'Content-Type' : 'application/json'
+				},
+				url : "/hospital/Login", //this is my servlet
+				data : JSON.stringify(data),
+				dataType:'json',
+				success : function(response)
+				{
+				var receivedData=response;
+				console.log(receivedData);
+				if( receivedData.status == "201")
+				{
+				alert("Your Loggin Was Successfully done ")
+				window.location.href = "http://localhost:8080/hospital/Appointment";
+				}
+				else
+				{
+				alert ("Check Your Number And Password ");
+				}
+				console.log(data);
+				},
+				error : function(jqXHR, exception) {
+				
+				}
+				});
+		}
 
 	</script>
 
