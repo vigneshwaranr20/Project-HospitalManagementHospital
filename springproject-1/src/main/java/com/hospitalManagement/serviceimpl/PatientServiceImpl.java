@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import com.hospitalManagement.entity.PatientEntity;
 import com.hospitalManagement.repository.DoctorRepository;
 import com.hospitalManagement.repository.PatientRepository;
+import com.hospitalManagement.repository.PaymentRepository;
 
 @Service
 public class PatientServiceImpl {
@@ -22,6 +23,9 @@ public class PatientServiceImpl {
 	
 	@Autowired
 	DoctorRepository doctorRepository ;
+	
+	@Autowired
+	PaymentRepository paymentRepository;
 
 	private static final Logger logger = LoggerFactory.getLogger(PatientServiceImpl.class);
 
@@ -32,6 +36,7 @@ public class PatientServiceImpl {
 		op.put("history_table", gh);
 		return op;
 	}
+
 
 //	public Map<String, Object> getPatients() {
 //		Map<String, Object> p = new HashMap<>();
@@ -94,29 +99,82 @@ public class PatientServiceImpl {
 		{
 			List<Map<String, Object>> result = doctorRepository.AllDoctorsDetails();
 			Map <String ,Object> data = new HashMap <>();
-			String dataString = result.toString();
-			logger.info("check"+dataString);
-			data.put("doctor",dataString);
+			//String dataString = result.toString();
+			//logger.info("check"+dataString);
+			data.put("doctor",result);
 			logger.info("check"+data);
 			return data;
 		}
 		
-		public Map<String,Object> getAppointmentdata(Map<String,Object> Appointments)
+		public Map<String,Object> getAppointmentdata(@RequestBody Map<String,Object> Appointments)
 	    {
-	      String PatientMobileNumber = (String) Appointments.get("mobile_number");   
+			
+		  long PatientMobileNumber = Long.valueOf((String)Appointments.get("mobile_number"));  
 	      String PatientName = (String) Appointments.get("name");
 	      String Patientdisease = (String) Appointments.get("disease");
+			/* String PatientGender = (String) Appointments.get("gender"); */
 	      String PatientAge = (String) Appointments.get("age");
-	      String date = (String) Appointments.get("Date_&_Time");
+	      String date = (String) Appointments.get("Date");
 	      String PatientAddress = (String) Appointments.get("address");
-	      String Specialist = (String) Appointments.get("Specialist");
-
-	      Long Number=Long.valueOf(PatientMobileNumber);
+//	      String Specialist = (String) Appointments.get("Specialist");
+//	      String DoctorName = (String) Appointments.get("Doctor_name");
+          logger.info("age = " + PatientAge);
+			/* long Number=Long.valueOf(PatientMobileNumber); */
+			 
 	      int age=Integer.valueOf(PatientAge);
 	      
-	      
-	      
-	      
-		return Appointments;
+	        patientRepository.insertData(PatientName, Patientdisease, age, PatientAddress, PatientMobileNumber);
+	      Map<String , Object> p = new HashMap<>();
+	      p.put("success","patient");  
+	        logger.info("Check"+ p);
+	        return p;
+	         
 	    }
+		
+		public Map<String,Object> getDoctordata( @RequestBody Map <String , Object> schedule)
+		{
+			
+			 String specialist = (String) schedule.get("Specialist");
+			
+			 logger.info("service "+ specialist);
+			List< Map<String,Object>> result=doctorRepository.fetchData(specialist);
+			 Map<String , Object> value = new HashMap<>();
+			 for (int i=0 ; i<result.size();i++) {
+				 int Doctor_id = (int) result.get(i).get("doctor_id");
+				
+				 String Doctor_name = (String) result.get(i).get("doctor_name");
+				  logger.info( "output" +result.get(i));
+				 value.put(String.valueOf(Doctor_id), Doctor_name);
+				 
+			 }
+			  logger.info("output" + value );
+		      return value;	
+		}
+	      
+		public List<String>getSpecialistData ()
+		{
+			List<String> result=doctorRepository.getData();	
+			logger.info(""+result);
+			return result;
+		}
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+//	      List <Map<String , Object>> doctor = doctorRepository.insertData(DoctorName, Specialist);
+//	     /* Map<String , Object> d = new HashMap<>();
+//	      d.put("success",doctor);*/
+//	      
+//	      List <Map<String, Object >>payment = paymentRepository.insertDate(date);
+//	      Map<String , Object> h = new HashMap<>();
+//	      h.put("success",201);
+//	      return h;
+	      
+	    
 }

@@ -1,6 +1,10 @@
 package com.hospitalManagement.controller;
 
+import java.util.List;
 import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -12,7 +16,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.google.gson.Gson;
+import com.hospitalManagement.repository.DoctorRepository;
 import com.hospitalManagement.repository.PatientRepository;
+import com.hospitalManagement.repository.PaymentRepository;
 import com.hospitalManagement.serviceimpl.PatientServiceImpl;
 
 @Controller
@@ -25,6 +31,12 @@ public class PatientContrller {
 
 	@Autowired
 	PatientRepository patientRepository;
+	
+	@Autowired
+	PaymentRepository paymentRepository;
+	
+	@Autowired
+	DoctorRepository doctorRepository;
 
 	@PostMapping("/sample")
 	@ResponseBody
@@ -50,6 +62,7 @@ public class PatientContrller {
 	@PostMapping("/Register")
 	@ResponseBody
 	public String insertData(@RequestBody Map<String, Object> patients) {
+		logger.info("patients" + patients);
 		Map<String,Object> data= patientService.getAllPatients(patients);
 		String rs=new Gson().toJson(data);
 		logger.info("Check"+ rs);
@@ -84,15 +97,36 @@ public class PatientContrller {
 		Map<String, Object> allList = patientService.getData();
 //		logger.info('Map allList');
 		String data = new Gson().toJson(allList);
-		logger.info(data);
+		logger.info("CONTROL CHECK"+data);
 		return data;
 	}
 	
-	@PostMapping("/Appointments")
+	@PostMapping("/submitAppointment")
 	@ResponseBody
-	public String Schedule (Map <String ,Object> Appointment) {
-		Map<String,Object> App=patientService.getAppointmentdata(Appointment);		
-		return null;
+	public String Schedule (@RequestBody Map<String ,Object> appointment) {
+		logger.info ("Appointment " + appointment.toString());
+		Map<String,Object> App=patientService.getAppointmentdata(appointment);	
+		String data2 = new Gson().toJson(App);
+		logger.info(data2);
+		return data2;
+		
+	}
+	@PostMapping("/getDoctordata")
+	@ResponseBody
+	public String fetch (@RequestBody  Map<String , Object>  dr ) {
+		logger.info("input " + dr);
+		Map<String,Object> app=patientService.getDoctordata(dr);
+		String doctorData=new Gson().toJson(app);
+		return doctorData;	
+		
+	}
+	
+	@PostMapping("/getSpecialistdata")
+	@ResponseBody
+	public String fetch1 () {		
+		List<String> app=patientService.getSpecialistData();
+		String specialist=new Gson().toJson(app);
+		return specialist;	
 		
 	}
 	
