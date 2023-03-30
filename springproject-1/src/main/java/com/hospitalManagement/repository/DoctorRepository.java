@@ -15,7 +15,10 @@ public interface DoctorRepository extends JpaRepository<DoctorEntity, Integer> {
 	 @Query (value = "Select * From doctor_table" , nativeQuery = true)
 	 public List<Map<String , Object>> AllDoctorsDetails();
 	 
-	 @Query (value ="INSERT INTO doctor_table (Doctor_name.specialist)Values ('?','?')",nativeQuery=true)
-	 void insertData (String Doctor_name,String specialist );
+	 @Query (value ="select doctor_id ,doctor_name  from doctor_table where specialist = ?",nativeQuery=true)
+	 public List<Map<String , Object>> fetchData (String specialist );
+	 
+	 @Query (value = "select distinct specialist from doctor_table ", nativeQuery = true)
+	 public List <String > getData();
 	 
 }

@@ -6,4 +6,5 @@ com\hospitalManagement\controller\PatientContrller.class
 com\hospitalManagement\Springproject1Application.class
 com\hospitalManagement\entity\HistoryEntity.class
 com\hospitalManagement\entity\PatientEntity.class
+com\hospitalManagement\repository\PaymentRepository.class
 com\hospitalManagement\serviceimpl\PatientServiceImpl.class

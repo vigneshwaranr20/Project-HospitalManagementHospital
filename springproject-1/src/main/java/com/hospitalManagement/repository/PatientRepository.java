@@ -27,9 +27,10 @@ public interface PatientRepository extends JpaRepository<PatientEntity, Integer>
 	  @Query(value="Select * from patient_details where mobile_number=?1 && create_password=?2 ",nativeQuery = true)
 	  List < Map<String,Object>>getData(long mobile_number, String create_password);
       
-	  
-	  @Query(value ="INSERT INTO patient_details(name, disease,gender,age,address,mobile_number) VALUES(?1,?2,?3,?4,?5,?6)", nativeQuery = true)
-	  void insertData (String name,String disease,String gender,int age,String address,Long mobile_number );
+	  @Modifying
+	  @Transactional
+	  @Query(value ="UPDATE patient_details SET name =?1, disease = ?2, age = ?3,  address = ?4 WHERE mobile_number = ?5", nativeQuery = true)
+	  void  insertData (String name,String disease,int age,String address,long number );
 	  
 
 }

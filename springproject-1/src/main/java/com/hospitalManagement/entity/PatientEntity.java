@@ -23,8 +23,7 @@ public class PatientEntity {
 	@Column(name = "disease")
 	private String disease;
 
-	@Column(name = "gender")
-	private String gender;
+	
 
 	@Column(name = "age")
 	private int age;
@@ -45,12 +44,12 @@ public class PatientEntity {
 
 	}
 
-	public PatientEntity(int id, String name, String disease, String gender, int age, String address,
+	public PatientEntity(int id, String name, String disease, int age, String address,
 			long mobile_number, String create_password, String confirm_password) {
 		this.id = id;
 		this.name = name;
 		this.disease = disease;
-		this.gender = gender;
+		
 		this.age = age;
 		this.address = address;
 		this.mobile_number = mobile_number;
@@ -82,13 +81,6 @@ public class PatientEntity {
 		this.disease = disease;
 	}
 
-	public String getGender() {
-		return gender;
-	}
-
-	public void setGender(String gender) {
-		this.gender = gender;
-	}
 
 	public int getAge() {
 		return age;

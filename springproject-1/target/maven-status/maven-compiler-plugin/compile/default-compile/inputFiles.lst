@@ -4,6 +4,7 @@ D:\Projects\Project-HospitalManagementHospital\springproject-1\src\main\java\com
 D:\Projects\Project-HospitalManagementHospital\springproject-1\src\main\java\com\hospitalManagement\entity\DoctorEntity.java
 D:\Projects\Project-HospitalManagementHospital\springproject-1\src\main\java\com\hospitalManagement\entity\HistoryEntity.java
 D:\Projects\Project-HospitalManagementHospital\springproject-1\src\main\java\com\hospitalManagement\entity\PaymentEntity.java
+D:\Projects\Project-HospitalManagementHospital\springproject-1\src\main\java\com\hospitalManagement\repository\PaymentRepository.java
 D:\Projects\Project-HospitalManagementHospital\springproject-1\src\main\java\com\hospitalManagement\repository\DoctorRepository.java
 D:\Projects\Project-HospitalManagementHospital\springproject-1\src\main\java\com\hospitalManagement\Springproject1Application.java
 D:\Projects\Project-HospitalManagementHospital\springproject-1\src\main\java\com\hospitalManagement\entity\PatientEntity.java
