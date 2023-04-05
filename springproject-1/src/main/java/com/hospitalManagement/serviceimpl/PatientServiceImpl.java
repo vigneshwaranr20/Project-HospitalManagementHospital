@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,8 +13,8 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.hospitalManagement.entity.PatientEntity;
 import com.hospitalManagement.repository.DoctorRepository;
+import com.hospitalManagement.repository.HistoryRepository;
 import com.hospitalManagement.repository.PatientRepository;
-import com.hospitalManagement.repository.PaymentRepository;
 
 @Service
 public class PatientServiceImpl {
@@ -25,7 +26,7 @@ public class PatientServiceImpl {
 	DoctorRepository doctorRepository ;
 	
 	@Autowired
-	PaymentRepository paymentRepository;
+	HistoryRepository historyRepository;
 
 	private static final Logger logger = LoggerFactory.getLogger(PatientServiceImpl.class);
 
@@ -79,7 +80,7 @@ public class PatientServiceImpl {
 			String createpassword = (String) Register.get("create_password");
 			Long Number=Long.valueOf(number);
 			
-			List<Map<String,Object>> check=patientRepository.getData(Number, createpassword);
+		Map<String,Object> check=patientRepository.getData(Number, createpassword);
 			Map<String,Object> get = new HashMap<>();
 			logger.info("Check" + check);
 			if(check.isEmpty())
@@ -89,6 +90,7 @@ public class PatientServiceImpl {
 			}
 			else
 			{
+				get.put("Number", check.get("mobile_number"));
 				get.put("status", "201");
 				logger.info("map" + get);
 			}
@@ -114,27 +116,41 @@ public class PatientServiceImpl {
 	      String Patientdisease = (String) Appointments.get("disease");
 			/* String PatientGender = (String) Appointments.get("gender"); */
 	      String PatientAge = (String) Appointments.get("age");
-	      String date = (String) Appointments.get("Date");
 	      String PatientAddress = (String) Appointments.get("address");
-//	      String Specialist = (String) Appointments.get("Specialist");
-//	      String DoctorName = (String) Appointments.get("Doctor_name");
+	      String DoctorName = (String) Appointments.get("doctor_name");
+	      String Specialist = (String) Appointments.get("Specialist");
+	      String date = (String) Appointments.get("date");
+	      
+	      List<Map<String, Object>> patientResult = patientRepository.getPatientId(PatientMobileNumber);
+	          
+	      int patient_id = (int) patientResult.get(0).get("patient_id");
+	      logger.info("checkresult" +patient_id); 
+	      
+	     
+	      
           logger.info("age = " + PatientAge);
 			/* long Number=Long.valueOf(PatientMobileNumber); */
 			 
 	      int age=Integer.valueOf(PatientAge);
 	      
-	        patientRepository.insertData(PatientName, Patientdisease, age, PatientAddress, PatientMobileNumber);
+	        patientRepository.insertData(PatientName, Patientdisease, age, PatientAddress, DoctorName, Specialist, date, PatientMobileNumber);
+			historyRepository.insertDate(PatientName,DoctorName,Specialist,date,patient_id); 
+	        logger.info("vky"+ date);
+	        
+	        
+	        
+	        
 	      Map<String , Object> p = new HashMap<>();
-	      p.put("success","patient");  
+	      p.put("success",patientResult);  
 	        logger.info("Check"+ p);
 	        return p;
 	         
 	    }
 		
-		public Map<String,Object> getDoctordata( @RequestBody Map <String , Object> schedule)
+		public Map<String,Object> getDoctordata(Map <String , Object> schedule)
 		{
 			
-			 String specialist = (String) schedule.get("Specialist");
+			 String specialist = (String) schedule.get("specialist");
 			
 			 logger.info("service "+ specialist);
 			List< Map<String,Object>> result=doctorRepository.fetchData(specialist);
@@ -143,8 +159,10 @@ public class PatientServiceImpl {
 				 int Doctor_id = (int) result.get(i).get("doctor_id");
 				
 				 String Doctor_name = (String) result.get(i).get("doctor_name");
+				 logger.info("fayaz" +Doctor_name);
 				  logger.info( "output" +result.get(i));
-				 value.put(String.valueOf(Doctor_id), Doctor_name);
+					value.put(String.valueOf(Doctor_id), Doctor_name);
+					
 				 
 			 }
 			  logger.info("output" + value );
@@ -158,6 +176,21 @@ public class PatientServiceImpl {
 			return result;
 		}
 		
+		public Map<String ,Object> getHistory1 (Map<String, Object> showsummery){
+			
+			String cusNumber = (String) showsummery.get("mobile_number");
+			long Number=Long.valueOf(cusNumber);
+			List<Map<String,Object>>showpatient=patientRepository.getPatientId(Number);
+			int patient_id = (int) showpatient.get(0).get("patient_id");
+			logger.info("" + patient_id);
+			
+			
+		 Map<String ,Object> resultdata	=new HashMap<>();
+		 List<Map<String,Object>>patientDetails= historyRepository.historyDetails(patient_id);
+		 resultdata.put("check", patientDetails);
+		 logger.info("resultChecking"+resultdata);
+		 return resultdata;
+		}
 		
 		
 		
@@ -166,15 +199,7 @@ public class PatientServiceImpl {
 		
 		
 		
-		
-//	      List <Map<String , Object>> doctor = doctorRepository.insertData(DoctorName, Specialist);
-//	     /* Map<String , Object> d = new HashMap<>();
-//	      d.put("success",doctor);*/
-//	      
-//	      List <Map<String, Object >>payment = paymentRepository.insertDate(date);
-//	      Map<String , Object> h = new HashMap<>();
-//	      h.put("success",201);
-//	      return h;
+
 	      
 	    
 }

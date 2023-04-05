@@ -16,6 +16,14 @@
 
 <title>Smart Hospital</title>
 <style type="text/css">
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+input:focus{
+outline:none;
+}
 * {
 	margin: 0;
 	padding: 0;
@@ -172,6 +180,7 @@ opacity: 1;
 	opacity: 1;
 	background: none;
 	color: #FFFFFF;
+	padding: 24px;
 }
 
 #form2 {
@@ -185,6 +194,7 @@ opacity: 1;
 	opacity: 1;
 	background: none;
 	color: #FFFFFF;
+	padding: 24px;
 }
 
 #form3 {
@@ -198,6 +208,7 @@ opacity: 1;
 	opacity: 1;
 	background: none;
 	color: #FFFFFF;
+	padding: 24px;
 }
 
 #form4 {
@@ -211,6 +222,7 @@ opacity: 1;
 	opacity: 1;
 	background: none;
 	color: #FFFFFF;
+	padding: 24px;
 }
 
 #form5 {
@@ -223,6 +235,7 @@ opacity: 1;
 	opacity: 1;
 	background: none;
 	color: #FFFFFF;
+	padding: 24px;
 }
 
 #form6 {
@@ -236,20 +249,22 @@ opacity: 1;
 	opacity: 1;
 	background: none;
 	color: #FFFFFF;
+	padding: 24px;
 }
 
 #form7{
 	position: absolute;
-	top: 493px;
-	left: 43px;
-	width: 615px;
-	height: 60px;
-	/* UI Properties */
-	border: 1px solid #FFFFFF;
-	opacity: 1;
-	background: none;
-	color: #FFFFFF; 
-	cursor:pointer;
+    top: 623px;
+    left: 986px;
+    width: 615px;
+    height: 60px;
+    border: 1px solid #FFFFFF;
+    opacity: 1;
+    background: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding: 18px;
+   
 }
 
 #form8 {
@@ -265,6 +280,7 @@ opacity: 1;
 	opacity: 1;
 	color: #FFFFFF;
 	font-family: 'Roboto', sans-serif;
+	
 }
 
 #form9 {
@@ -282,18 +298,17 @@ opacity: 1;
 }
 #form10 {
 	position: absolute;
-	top: 573px;
-	left: 43px;
-	width: 615px;
-	height: 60px;
-	/* UI Properties */
-	border: 1px solid #FFFFFF;
-	opacity: 1;
-	background: none;
-	color: #FFFFFF;
-	cursor:pointer;
-	}
-
+    top: 573px;
+    left: 43px;
+    width: 615px;
+    height: 60px;
+    border: 1px solid #FFFFFF;
+    opacity: 1;
+    background: none;
+    color: #FFFFFF;
+    cursor: pointer;
+    padding: 18px;
+}
 .footer1 {
 	top: 930px;
 	left: 0px;
@@ -333,7 +348,7 @@ position:absolute;
 width: 672px;
 height: 657px;
 /* UI Properties */
-background: transparent url('img/Rectangle 23.png') 0% 0% no-repeat padding-box;
+background: transparent  0% 0% no-repeat padding-box;
 border: 1px solid #707070;
 opacity: 1;
 }
@@ -342,7 +357,7 @@ opacity: 1;
 
 </style>
 </head>
-<body>
+<body onload="userName()">
 	<div class="container1">
 		<div class="header1">
 			<a href="http://localhost:8080/hospital/patients"> <img
@@ -350,18 +365,18 @@ opacity: 1;
 			</a> <a href="http://localhost:8080/hospital/Appointment">
 				<button id="button1">Appointment</button>
 			</a> <a href="http://localhost:8080/hospital/PatientDetails"><button
-					id="button2">Patient Details</button></a> <a
+					id="button2">Patient Details</button></a> <!-- <a
 				href="http://localhost:8080/hospital/Register"><button
 					id="button3">Register</button></a> <a
 				href="http://localhost:8080/hospital/Login"><button
-					id="button3a">Login</button></a>
+					id="button3a">Login</button></a> -->
 		</div>
 		<div class="h3a">
 			<p>Make an Appointment</p>
 		</div>
 		<div class="appointmentimage">
 			<img
-				src="https://storage.googleapis.com/smco-web-static-assets/TraineeProject/vig2.png">
+				src="https://img.freepik.com/premium-vector/book-doctor-appointment-card-template_151150-11155.jpg?w=740">
 		</div>
 
 		<div class="registerform">
@@ -369,25 +384,30 @@ opacity: 1;
 				<p>Book Appointment</p>
 			</div>
 			<div class="registration">
-				<input type="number" id="form1" placeholder="Patient Mobile Number"	required> 
+				<input type="number" id="form1"> 
+				<script type="text/javascript">
+					function userName(){
+					const urlParams = new URLSearchParams(window.location.search);
+					var cusNumber = urlParams.get('sendNumber');
+					document.getElementById("form1").value = cusNumber;
+					}
+				</script>
 				<input type="text" id="form2"placeholder="Patient Name" required> 
 				<input type="text" id="form3" placeholder="Patient disease" required> 
 				<input type="number" id="form4" placeholder="Patient Age" required> 
 				<input type="datetime-local"id="form5" placeholder="Date & Time">
 				<input type="text" id="form6"	placeholder="Patient Address" required> 
-				<select placeholder="Specialist" id="form7" >
-				<option style="background: white;color:black;" value="" disabled selected>Specialist</option>
-				 <option style="background: white;color:black;" value="Cardiologists">Cardiologists</option> 
+				<!-- <select placeholder="Specialist" id="form7" > -->
+				<!--  <option style="background: white;color:black;" value="" disabled selected>Specialist</option> -->
+				 <!-- <option style="background: white;color:black;" value="Cardiologists">Cardiologists</option> 
 				  <option style="background: white;color:black;" value="Dermatologists">Dermatologists</option>
 				  <option style="background: white;color:black;" value="Endocrinologists">Endocrinologists</option>
 				  <option style="background: white;color:black;" value="Pediatricians">Pediatricians</option>
-				  <option style="background: white;color:black;" value="General Surgeons">General Surgeons</option>
-				</select>
-				<select placeholder="Doctor Name" id="form10">
-				 <option value="" disabled selected>Doctor Name</option> 
-				</select> 
+				  <option style="background: white;color:black;" value="General Surgeons">General Surgeons</option> -->
+				<select placeholder="Doctor Name" id="form10"> 
+				</select>				 
 				<input type="reset" id="form8" value="cancel"> 
-				<input type="submit" id="form9" onclick="dataFilter();" value="Schedule">
+				<input type="submit" id="form9" onclick="dataFilter();dataForm()" value="Schedule" >
 			</div>
 		</div>
 		<div class="footer1"></div>
@@ -397,7 +417,7 @@ opacity: 1;
 
 	</div>
 	
-	<script > 
+<!-- 	<script > 
     $(document).ready(function()
     {
     $("#form7").change(function() 
@@ -434,8 +454,46 @@ opacity: 1;
     }  
   });
     });
-</script>
+</script> -->
 <script type="text/javascript">
+function dataForm() {
+	  // Get form values
+	  var name = document.getElementById("form2").value.trim();
+	  var disease = document.getElementById("form3").value.trim();
+	  var age = document.getElementById("form4").value;
+	  var datetime = document.getElementById("form5").value;
+	  var address = document.getElementById("form6").value.trim();
+	  // Validate name
+	  if (name === "") {
+	    console.log("Please enter patient name");
+	    return false;
+	  }
+	  // Validate disease
+	  if (disease === "") {
+	    console.log("Please enter patient disease");
+	    return false;
+	  }
+	  // Validate age
+	  if (isNaN(age) || age === "") {
+	    console.log("Please enter a valid patient age");
+	    return false;
+	  }
+	  // Validate date and time
+	  if (datetime === "") {
+	    console.log("Please select date and time");
+	    return false;
+	  }
+	  // Validate address
+	  if (address === "") {
+	    console.log("Please enter patient address");
+	    return false;
+	  }
+	  // If all fields are valid, submit the form
+	  return true;
+	}
+
+
+
     function dataFilter() {
       console.log("data");
       debugger;
@@ -447,7 +505,7 @@ opacity: 1;
       var Date = document.getElementById("form5").value;
       var PatientAddress = document.getElementById("form6").value;
       var Specialist = document.getElementById("form7").value;
-      var DoctorName = document.getElementById("form10").value;
+      var DoctorName = document.getElementById("form10").value; 
       
       
       
@@ -455,108 +513,134 @@ opacity: 1;
     		  "name" : PatientName,
     		  "disease" : Patientdisease,
     		  "age":PatientAge,
-    		  "date_time":Date, 
+    		  "date":Date, 
     		  "address":PatientAddress,
     		  "Specialist":Specialist,
-    		  "doctor_name":DoctorName};
+    		  "doctor_name":DoctorName}; 
       console.log(data);
       $.ajax({
         type : "POST",
         headers : {
           'Content-Type' : 'application/json'
         },
-        url : "/hospital/submitAppointment2", //this is my servlet
+        url : "/hospital/submitAppointment", //this is my servlet
         data : JSON.stringify(data),
-
+        dataType:'json',
         // cache: false,
         // async: false,
-        success : function(response) {
+        success : function(data) {
+        	console.log("hiii");
+        	var pData = data.mobile_number;
+        	
+        	console.log(pData);
         	
           console.log("hiii");
+          window.location.href="http://localhost:8080/hospital/PatientDetails?mobilenumber="+PatientMobileNumber;
         }
       });
     }
+    
     specialistData();
+	debugger;
+    function specialistData() {
+    	
+      $.ajax({
+        type: "POST",
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        url: "/hospital/getSpecialistdata",
+        dataType: 'json',
+        success: function(data) {
+          console.log(data);
 
-    function specialistData()  {
-    	
-    	
-    	$.ajax({
-            type : "POST",
-            headers : {
-              'Content-Type' : 'application/json'
-            },
-            url : "/hospital/getSpecialistdata", //this is my servlet
+          /* var key = Object.keys(data); */
+          var map = data;
+			debugger;
+          var dropdown = document.createElement("select");
+          
+          dropdown.id = "form7";
+          var emptyOption = document.createElement("option");
+          emptyOption.setAttribute("value", "");
+          emptyOption.setAttribute("disabled", "");
+          emptyOption.setAttribute("selected", "");
+          emptyOption.textContent = "Select a specialist";
+          dropdown.appendChild(emptyOption);
+
+          
+
+          for (var i = 0; i < data.length; i++) { 
+            var option = document.createElement("option");
+            option.setAttribute('style', 'color:black');
+            option.setAttribute("id", '' , [i]);
             
-			dataType:'json',
-            // cache: false,
-            // async: false,
-            success : function(data) {
-            	console.log(data);
-               /* console.log("hello"); */
-              
-              var key = Object.keys(data); 
-              var map = data; 
-              /* console.log("v" +key.length); */
+            option.value = map[i];
+            option.text = map[i];
+            dropdown.appendChild(option);
+          }
 
-              var dropdown = document.createElement("select");
-              dropdown.setAttribute("onchange", "doctorData()" );  
-              dropdown.id = "form7";
+          document.body.appendChild(dropdown);
+          debugger;
+          debugger;
+          $(document).ready(function() {
 
-              for (var i = 0; i < key.length; i++) {
-            	 /*  console.log("welcome"); */
-                var option = document.createElement("option");
-                option.value =key[i];
-                option.text = map[key[i]];
-                dropdown.appendChild(option);
-              }
-              
-
-              document.body.appendChild(dropdown);
-            }
-    
+            $("#form7").on("change", function() {
+          	  
+              console.log("hiii");
+              doctorData();
             });
-    	}
-    
-    
-    function doctorData()  {
-    	console.log("data");
-    	debugger;
-    	$.ajax({
-            type : "POST",
-            headers : {	
-              'Content-Type' : 'application/json'
-            },
-            url : "/hospital/getDoctordata", //this is my servlet
-            
-            // cache: false,
-            // async: false,
-            success : function(response) {
+
+            function doctorData() {
+            	var e = document.getElementById("form7");
+            	var value = e.value;
+            	var text = e.options[e.selectedIndex].text;
+            	console.log ("" + value);
+            	console.log ("" +text);
             	
-              /* console.log("hello"); */
-              /*  var map = {"1":"Dr.Anil","2":"Dr.Suganya"}; */
-              var key=Object.keys(map);
-          	
-
-              var dropdown = document.createElement("select"); 
-              dropdown.id = "form10"; 
-
-	
-	          for (var i = 0; i < key.length; i++) {
-	            var option = document.createElement("option");
-	            option.value = key[i];
-	            option.text = map[i];
-	            dropdown.appendChild(option);
-	
-	          }
-	
-	            document.body.appendChild(dropdown);
-	           } 
-    	
-    	});
-    	
+            	var specialist = text;
+            	var value = {"specialist":specialist};
+            	
+            	/* document.getElementById("form10").innerHTML=""; */
+              $.ajax({
+                type: "POST",
+                headers: {
+                  'Content-Type': 'application/json'
+                },
+                url: "/hospital/getDoctordata",
+                data : JSON.stringify(value),
+                dataType: 'json',
+                success: function(result) {
+                  var doctorName = result;
+                  
+                  console.log(doctorName);
+                  
+                  var key = Object.keys(doctorName);
+                  
+                  var dropdown = document.getElementById("form10");
+                  dropdown.innerHTML = "";                  
+                  for (var i = 0; i < key.length; i++) {
+                	var option = document.createElement("option");
+                    option.setAttribute('style', 'color:black');
+                    option.value = doctorName[key[i]];
+                    option.text = doctorName[key[i]];
+                    dropdown.appendChild(option);
+                    
+                  }
+                  var div = document.getElementByClass("registration");
+                  div.appendChild(dropdown);
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                  console.log("AJAX error: " + errorThrown);
+                }
+              });
+            }
+          });
+        }
+        
+      });
     }
-    
+	
+
     
   
     
