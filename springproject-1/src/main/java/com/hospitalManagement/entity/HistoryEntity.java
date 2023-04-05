@@ -11,49 +11,52 @@ import javax.persistence.Table;
 @Table(name = "history_table")
 
 public class HistoryEntity {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+
 	@Column(name = "history_id")
-	private int history_id;
+	private int id;
 
-	@Column(name = "doctor_id")
-	private int doctor_id;
+	@Column(name = "name")
+	private String name;
 
-	@Column(name = "patient_id")
-	private int patient_id;
+	@Column(name = "doctor_name")
+	private String doctor_name;
+
+	
 
 	@Column(name = "specialist")
 	private String specialist;
 
-	@Column(name = "no_of_appointment")
-	private int no_of_appointment;
+	@Column(name = "date")
+	private String date;
+	
+	@Column (name = "patient_id")
+	private int patient_id;
+	
 
-	@Column(name = "payment_id")
-	private int payment_id;
-
-	public int getHistory_id() {
-		return history_id;
+	public int getId() {
+		return id;
 	}
 
-	public void setHistory_id(int history_id) {
-		this.history_id = history_id;
+	public void setId(int id) {
+		this.id = id;
 	}
 
-	public int getDoctor_id() {
-		return doctor_id;
+	public String getName() {
+		return name;
 	}
 
-	public void setDoctor_id(int doctor_id) {
-		this.doctor_id = doctor_id;
+	public void setName(String name) {
+		this.name = name;
 	}
 
-	public int getPatient_id() {
-		return patient_id;
+	public String getDoctor_name() {
+		return doctor_name;
 	}
 
-	public void setPatient_id(int patient_id) {
-		this.patient_id = patient_id;
+	public void setDoctor_name(String doctor_name) {
+		this.doctor_name = doctor_name;
 	}
 
 	public String getSpecialist() {
@@ -64,29 +67,20 @@ public class HistoryEntity {
 		this.specialist = specialist;
 	}
 
-	public int getNo_of_appointment() {
-		return no_of_appointment;
+	public String getDate() {
+		return date;
 	}
 
-	public void setNo_of_appointment(int no_of_appointment) {
-		this.no_of_appointment = no_of_appointment;
+	public void setDate(String date) {
+		this.date = date;
+	}
+	
+	public int getpatient_id() {
+		return patient_id;
 	}
 
-	public int getPayment_id() {
-		return payment_id;
+	public void setpatient_id(int patient_id) {
+		this.patient_id = patient_id;
 	}
-
-	public void setPayment_id(int payment_id) {
-		this.payment_id = payment_id;
-	}
-
-	@Override
-	public String toString() {
-		return "HistoryEntity [history_id=" + history_id + ", doctor_id=" + doctor_id + ", patient_id=" + patient_id
-				+ ", specialist=" + specialist + ", no_of_appointment=" + no_of_appointment + ", payment_id="
-				+ payment_id + "]";
-	}
-
-
 
 }

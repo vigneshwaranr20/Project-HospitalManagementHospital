@@ -4,7 +4,7 @@
 <meta charset="ISO-8859-1">
 <script
 	src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
-	<script src="https://kit.fontawesome.com/64d58efce2.js"
+<script src="https://kit.fontawesome.com/64d58efce2.js"
 	crossorigin="anonymous"></script>
 <link
 	href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
@@ -18,6 +18,15 @@
 
 <title>Smart Hospital</title>
 <style type="text/css">
+input::-webkit-outer-spin-button, input::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+
+input:focus {
+	outline: none;
+}
+
 * {
 	margin: 0;
 	padding: 0;
@@ -91,7 +100,7 @@
 	opacity: 1;
 	position: absolute;
 	background: none;
-	    font: normal normal normal 20px/23px Arial;
+	font: normal normal normal 20px/23px Arial;
 }
 
 #button3a {
@@ -145,6 +154,7 @@
 	opacity: 1;
 	background: none;
 	color: #FFFFFF;
+	padding: 24px;
 }
 
 #form-2 {
@@ -157,6 +167,7 @@
 	opacity: 1;
 	background: none;
 	color: #FFFFFF;
+	padding: 24px;
 }
 
 #form-3 {
@@ -202,6 +213,7 @@ input::placeholder {
 	opacity: 1;
 	position: absolute;
 }
+
 .footer1 {
 	top: 930px;
 	left: 0px;
@@ -212,12 +224,13 @@ input::placeholder {
 	opacity: 1;
 	position: absolute;
 }
+
 #loginToggle {
-    position: absolute;
-    top: 250px;
-    left: 630px;
-    color: white;
-    cursor:pointer;
+	position: absolute;
+	top: 250px;
+	left: 630px;
+	color: white;
+	cursor: pointer;
 }
 </style>
 
@@ -225,83 +238,91 @@ input::placeholder {
 <body>
 	<div class="container1">
 		<div class="header1">
-			<a href="http://localhost:8080/hospital/patients"> <img	src="https://storage.googleapis.com/smco-web-static-assets/TraineeProject/vig_logo.jpg"> </a> 
-			<a href="http://localhost:8080/hospital/Appointment"> <button id="button1">Appointment</button>	</a> 
-			<a href="http://localhost:8080/hospital/PatientDetails"><button	id="button2">Patient Details</button></a> 
-			<a href="http://localhost:8080/hospital/Register"><button id="button3">Register</button></a> 
-			<a href="http://localhost:8080/hospital/Login"><button	id="button3a">Login</button></a>
+			<a href="http://localhost:8080/hospital/patients"> <img
+				src="https://storage.googleapis.com/smco-web-static-assets/TraineeProject/vig_logo.jpg">
+			</a>
+			<!-- <a href="http://localhost:8080/hospital/Appointment"> <button id="button1">Appointment</button>	</a> 
+			<a href="http://localhost:8080/hospital/PatientDetails"><button	id="button2">Patient Details</button></a>  -->
+			<a href="http://localhost:8080/hospital/Register"><button
+					id="button3">Register</button></a> <a
+				href="http://localhost:8080/hospital/Login"><button
+					id="button3a">Login</button></a>
 		</div>
 		<div class="appointmentimage">
-			<img src="https://storage.googleapis.com/smco-web-static-assets/TraineeProject/vig1.png">
+			<img
+				src="https://storage.googleapis.com/smco-web-static-assets/TraineeProject/vig1.png">
 		</div>
 		<div class="registerform">
 			<div class="regtitlea">
 				<p>Login</p>
 			</div>
 			<form class="registration">
-				<input type="number" id="form-1" placeholder="Mobile Number" required>
-				<input type="password" id="form-2" placeholder="password" required>
-				<span id="loginPasswordSuccess" onclick="showPassword()"><i class="fa fa-eye toggle " id="loginToggle"></i></span>
-				
-				<input type="submit" id="form-3" onclick="dataFilter()" value="Login" required>
+				<input type="number" id="form-1" placeholder="Mobile Number"
+					required> <input type="password" id="form-2"
+					placeholder="password" required> <span
+					id="loginPasswordSuccess" onclick="showPassword()"><i
+					class="fa fa-eye toggle " id="loginToggle"></i></span> <input
+					type="submit" id="form-3" onclick="dataFilter()" value="Login"
+					required>
 			</form>
 		</div>
 
 		<div class="footer1"></div>
 	</div>
-	
+
 	<script>
 		function showPassword() {
-				var loginPassword = document.querySelector('#form2');
-				var loginToggle = document.querySelector("#loginToggle");
-			    // toggle the type attribute
-			    var type = loginPassword.getAttribute('type') === 'password' ? 'text' : 'password';
-			    loginPassword.setAttribute('type', type);
-			    // toggle the eye slash icon
-			    loginToggle.classList.toggle('fa-eye-slash');
-			  }
+			var loginPassword = document.querySelector('#form-2');
+			var loginToggle = document.querySelector("#loginToggle");
+			// toggle the type attribute
+			var type = loginPassword.getAttribute('type') === 'password' ? 'text'
+					: 'password';
+			loginPassword.setAttribute('type', type);
+			// toggle the eye slash icon
+			loginToggle.classList.toggle('fa-eye-slash');
+		}
 		function dataFilter() {
 			debugger;
 			var MobileNumber = document.getElementById("form-1").value;
-			var Password=document.getElementById("form-2").value;
-			var data =
-			{
-					"mobile_number" : MobileNumber,
-					"create_password" :Password
-				
-			};
-				 console.log(data);
-				 debugger;
-				$.ajax({
-				
-				type : "POST",
-				headers : {
-				'Content-Type' : 'application/json'
-				},
-				url : "/hospital/Login", //this is my servlet
-				data : JSON.stringify(data),
-				dataType:'json',
-				success : function(response)
-				{
-				var receivedData=response;
-				console.log(receivedData);
-				if( receivedData.status == "201")
-				{
-				alert("Your Loggin Was Successfully done ")
-				window.location.href = "http://localhost:8080/hospital/Appointment";
-				}
-				else
-				{
-				alert ("Check Your Number And Password ");
-				}
-				console.log(data);
-				},
-				error : function(jqXHR, exception) {
-				
-				}
-				});
-		}
+			var Password = document.getElementById("form-2").value;
+			var data = {
+				"mobile_number" : MobileNumber,
+				"create_password" : Password
 
+			};
+			console.log(data);
+			debugger;
+			$
+					.ajax({
+
+						type : "POST",
+						headers : {
+							'Content-Type' : 'application/json'
+						},
+						url : "/hospital/Login", //this is my servlet
+						data : JSON.stringify(data),
+						dataType : 'json',
+						success : function(response) {
+							var receivedData = response;
+							var cusNumber = response.Number;
+							console.log(receivedData);
+							if (receivedData.status == "201") {
+								alert("Your Loggin Was Successfully done ")
+								window.location.href = "http://localhost:8080/hospital/Appointment?sendNumber="
+										+ cusNumber;
+							} else {
+								alert("Check Your Number And Password ");
+							}
+							console.log(data);
+						},
+						error : function(jqXHR, exception) {
+
+						}
+					});
+		}
+		
+		
+		
 	</script>
 
 

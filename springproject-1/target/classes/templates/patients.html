@@ -1194,7 +1194,7 @@ position: absolute;
 			best medical, diagnostic and surgical services. Our services reach
 			over 5,00,000 outpatients and 40,000 inpatients a year.</p>
 		<a href="http://localhost:8080/hospital/Register"><button
-				id="button4">Appointment Book</button></a>
+				id="button4"> Book Appointment</button></a>
 		<div class="abouti"></div>
 		<img
 			src="https://storage.googleapis.com/smco-web-static-assets/TraineeProject/hospitall.jpg">
@@ -1238,7 +1238,7 @@ position: absolute;
 				going beyond the norm of healthcare.</p>
 		</div>
 		<a href="http://localhost:8080/hospital/Register"><button
-				class="button5">Appointment Book</button></a>
+				class="button5"> Book Appointment</button></a>
 		<div class="portion4">
 			<h3>The Best Quality Service for Your Family</h3>
 		</div>
@@ -1423,9 +1423,8 @@ $.ajax({
 										.addEventListener(
 												'click',
 												function() {
-													console
-															.log('Buy button clicked');
-													window.location.href = "Appointment.html";
+													
+													window.location.href = "http://localhost:8080/hospital/Register";
 												})
 								var doctorname = document.createElement('h3');
 								doctorname.textContent = doctors["doctor"][i].doctor_name;
