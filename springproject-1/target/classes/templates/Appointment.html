@@ -18,11 +18,11 @@
 <style type="text/css">
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: blue;
+  -webkit-appearance: none;
   margin: 0;
 }
 input:focus{
-outline:black;
+outline:none;
 }
 * {
 	margin: 0;
@@ -264,6 +264,7 @@ opacity: 1;
     color: #FFFFFF;
     cursor: pointer;
     padding: 18px;
+    border-color: none!important;
    
 }
 
@@ -343,6 +344,11 @@ input::value {
 	position: absolute;
 	left: 25px;
 	top: 17px;
+}
+select:focus-visible {
+    border: 2px dashed crimson;
+    border-radius: 3px;
+    outline: none;
 }
 .appointmentimage img {
 position:absolute;
@@ -643,7 +649,7 @@ function dataForm() {
 	
     let inputElement = document.querySelector('form7'); // select the input element
     inputElement.addEventListener('click', () => {
-      inputElement.style.outline = 'none'; // remove the outline on click
+      inputElement.style.outline = 'blue'; // remove the outline on click
     });
 
     
