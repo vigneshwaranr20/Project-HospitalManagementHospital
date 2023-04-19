@@ -18,11 +18,11 @@
 <style type="text/css">
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-  -webkit-appearance: none;
+  -webkit-appearance: blue;
   margin: 0;
 }
 input:focus{
-outline:none;
+outline:black;
 }
 * {
 	margin: 0;
@@ -280,6 +280,7 @@ opacity: 1;
 	opacity: 1;
 	color: #FFFFFF;
 	font-family: 'Roboto', sans-serif;
+	font-size:20px;
 	
 }
 
@@ -295,6 +296,7 @@ opacity: 1;
 	opacity: 1;
 	background-color: white;
 	font-family: 'Roboto', sans-serif;
+	font-size:20px;
 }
 #form10 {
 	position: absolute;
@@ -357,7 +359,7 @@ opacity: 1;
 
 </style>
 </head>
-<body onload="userName()">
+<body >
 	<div class="container1">
 		<div class="header1">
 			<a href="http://localhost:8080/hospital/patients"> <img
@@ -384,18 +386,12 @@ opacity: 1;
 				<p>Book Appointment</p>
 			</div>
 			<div class="registration">
-				<input type="number" id="form1"> 
-				<script type="text/javascript">
-					function userName(){
-					const urlParams = new URLSearchParams(window.location.search);
-					var cusNumber = urlParams.get('sendNumber');
-					document.getElementById("form1").value = cusNumber;
-					}
-				</script>
+				<input type="number" id="form1" placeholder="Enter Mobile Number" required> 
+				
 				<input type="text" id="form2"placeholder="Patient Name" required> 
 				<input type="text" id="form3" placeholder="Patient disease" required> 
 				<input type="number" id="form4" placeholder="Patient Age" required> 
-				<input type="datetime-local"id="form5" placeholder="Date & Time">
+				<input type="date" name="somedate" id="form5" placeholder="Date & Time">
 				<input type="text" id="form6"	placeholder="Patient Address" required> 
 				<!-- <select placeholder="Specialist" id="form7" > -->
 				<!--  <option style="background: white;color:black;" value="" disabled selected>Specialist</option> -->
@@ -456,6 +452,10 @@ opacity: 1;
     });
 </script> -->
 <script type="text/javascript">
+
+var today = new Date().toISOString().split('T')[0];
+document.getElementsByName("somedate")[0].setAttribute('min', today);
+
 function dataForm() {
 	  // Get form values
 	  var name = document.getElementById("form2").value.trim();
@@ -496,7 +496,7 @@ function dataForm() {
 
     function dataFilter() {
       console.log("data");
-      debugger;
+      /* debugger; */
       var PatientMobileNumber = document.getElementById("form1").value; 
       var PatientName = document.getElementById("form2").value;
       var Patientdisease = document.getElementById("form3").value;
@@ -535,13 +535,13 @@ function dataForm() {
         	console.log(pData);
         	
           console.log("hiii");
-          window.location.href="http://localhost:8080/hospital/PatientDetails?mobilenumber="+PatientMobileNumber;
+          window.location.href="http://localhost:8080/hospital/PatientDetails";
         }
       });
     }
     
     specialistData();
-	debugger;
+	/* debugger; */
     function specialistData() {
     	
       $.ajax({
@@ -556,7 +556,7 @@ function dataForm() {
 
           /* var key = Object.keys(data); */
           var map = data;
-			debugger;
+			/* debugger; */
           var dropdown = document.createElement("select");
           
           dropdown.id = "form7";
@@ -580,8 +580,8 @@ function dataForm() {
           }
 
           document.body.appendChild(dropdown);
-          debugger;
-          debugger;
+          /* debugger;
+          debugger; */
           $(document).ready(function() {
 
             $("#form7").on("change", function() {
@@ -599,6 +599,7 @@ function dataForm() {
             	
             	var specialist = text;
             	var value = {"specialist":specialist};
+            	document.getElementById("form7").style.borderColor=("#FFFFFF");
             	
             	/* document.getElementById("form10").innerHTML=""; */
               $.ajax({
@@ -640,6 +641,10 @@ function dataForm() {
       });
     }
 	
+    let inputElement = document.querySelector('form7'); // select the input element
+    inputElement.addEventListener('click', () => {
+      inputElement.style.outline = 'none'; // remove the outline on click
+    });
 
     
   

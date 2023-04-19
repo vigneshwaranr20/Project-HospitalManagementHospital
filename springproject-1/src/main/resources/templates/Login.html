@@ -181,6 +181,7 @@ input:focus {
 	color: #174FAC;
 	background-color: white;
 	font-family: 'Roboto', sans-serif;
+	    font-size: 20px;
 }
 
 ::-webkit-input-placeholder { /* Edge */
@@ -207,7 +208,7 @@ input::placeholder {
 	width: 757px;
 	height: 561px;
 	/* UI Properties */
-	background: transparent url('img/Rectangle 43.png') 0% 0% no-repeat
+	background: transparent  0% 0% no-repeat
 		padding-box;
 	border: 1px solid #707070;
 	opacity: 1;
@@ -228,7 +229,7 @@ input::placeholder {
 #loginToggle {
 	position: absolute;
 	top: 250px;
-	left: 630px;
+	left: 615px;
 	color: white;
 	cursor: pointer;
 }
@@ -256,7 +257,7 @@ input::placeholder {
 			<div class="regtitlea">
 				<p>Login</p>
 			</div>
-			<form class="registration">
+			<div class="registration">
 				<input type="number" id="form-1" placeholder="Mobile Number"
 					required> <input type="password" id="form-2"
 					placeholder="password" required> <span
@@ -264,7 +265,7 @@ input::placeholder {
 					class="fa fa-eye toggle " id="loginToggle"></i></span> <input
 					type="submit" id="form-3" onclick="dataFilter()" value="Login"
 					required>
-			</form>
+			</div>
 		</div>
 
 		<div class="footer1"></div>
@@ -282,7 +283,7 @@ input::placeholder {
 			loginToggle.classList.toggle('fa-eye-slash');
 		}
 		function dataFilter() {
-			debugger;
+			/* debugger; */
 			var MobileNumber = document.getElementById("form-1").value;
 			var Password = document.getElementById("form-2").value;
 			var data = {
@@ -292,39 +293,97 @@ input::placeholder {
 			};
 			console.log(data);
 			debugger;
-			$
-					.ajax({
+			$.ajax({
+			    type: "POST",
+			    headers: {
+			        'Content-Type': 'application/json'
+			    },
+			    url: "/hospital/Login",
+			    data: JSON.stringify(data),
+			    dataType: 'json',
+			    success: function(response) {
+			        var receivedData = response;
+			        console.log(receivedData);
+			        if (response.status == "201") {
+			        	console.log('output');
+			            registerShow();
+			        } else {
+			        	registerShows();
+			        }
+			        console.log(data);
+			    },
+			    error: function(jqXHR, exception) {
 
-						type : "POST",
-						headers : {
-							'Content-Type' : 'application/json'
-						},
-						url : "/hospital/Login", //this is my servlet
-						data : JSON.stringify(data),
-						dataType : 'json',
-						success : function(response) {
-							var receivedData = response;
-							var cusNumber = response.Number;
-							console.log(receivedData);
-							if (receivedData.status == "201") {
-								alert("Your Loggin Was Successfully done ")
-								window.location.href = "http://localhost:8080/hospital/Appointment?sendNumber="
-										+ cusNumber;
-							} else {
-								alert("Check Your Number And Password ");
-							}
-							console.log(data);
-						},
-						error : function(jqXHR, exception) {
+			    }
+			});
 
-						}
-					});
 		}
+			function registerShow() {
+			    var modal1 = document.createElement('div');
+			    modal1.classList.add('modal', 'fade');
+			    modal1.setAttribute('tabindex', '-1');
+			    modal1.setAttribute('aria-labelledby', 'exampleModalLabel');
+			    modal1.setAttribute('aria-hidden', 'true');
+			    modal1.innerHTML = `
+			        <div class="modal-dialog">
+			            <div class="modal-content" style="
+			                width: 500px; height: 111px;
+			            " >
+			                <div class="modal-body">
+			                    <h3 class="modalHeading">You have successfully logged in</h3>
+			                    <button type="button" id="modal-cancel-btn" class="btn btn-secondary" data-bs-dismiss="modal"onclick="redirect3()" style="
+			                        position: absolute;
+			                    left: 225px;
+			                ">OK</button>
+			                </div>
+			            </div>
+			        </div>`;
+			        
+			       
+			    document.body.appendChild(modal1);
+			    var firstModalInstance = new bootstrap.Modal(modal1);
+			    firstModalInstance.show();
+			}	
+			debugger;
+			 function redirect3() 
+				{
+				    window.location.href = "http://localhost:8080/hospital/Appointment";
+				}
+			 
+			 function registerShows() {
+				    var modal1 = document.createElement('div');
+				    modal1.classList.add('modal', 'fade');
+				    modal1.setAttribute('tabindex', '-1');
+				    modal1.setAttribute('aria-labelledby', 'exampleModalLabel');
+				    modal1.setAttribute('aria-hidden', 'true');
+				    modal1.innerHTML = `
+				        <div class="modal-dialog">
+				            <div class="modal-content" style="
+				                width: 535px; height:111px;
+				            " >
+				                <div class="modal-body">
+				                    <h3 class="modalHeading">Please check Your Number or Password</h3>
+				                    <button type="button" id="modal-cancel-btn" class="btn btn-secondary" data-bs-dismiss="modal"onclick="redirect4()" style="
+				                        position: absolute;
+				                    left: 225px;
+				                ">OK</button>
+				                </div>
+				            </div>
+				        </div>`;
+				        
+				       
+				    document.body.appendChild(modal1);
+				    var firstModalInstance = new bootstrap.Modal(modal1);
+				    firstModalInstance.show();
+				}	
+				debugger;
+				 function redirect4() 
+					{
+					    window.location.href = "http://localhost:8080/hospital/Login";
+					}
 		
 		
 		
 	</script>
-
-
 </body>
 </html>
