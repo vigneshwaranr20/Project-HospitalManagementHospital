@@ -204,6 +204,7 @@ input:focus {
 	color: #FFFFFF;
 	opacity: 1;
 	font-family: 'Roboto', sans-serif;
+	    font-size: 20px;
 }
 
 #form5 {
@@ -217,6 +218,7 @@ input:focus {
 	opacity: 1;
 	background-color: white;
 	font-family: 'Roboto', sans-serif;
+	    font-size: 20px;
 }
 
 ::-webkit-input-placeholder { /* Edge */
@@ -284,7 +286,7 @@ input::placeholder {
 #loginToggle {
 	position: absolute;
 	top: 190px;
-	left: 630px;
+	left: 615px;
 	color: white;
 	cursor: pointer;
 }
@@ -402,7 +404,7 @@ input::placeholder {
 		                // cache: false,
 		                // async: false,
 		success:function(response) {
-		debugger;
+		/* debugger; */
 		var receivedData=response;
 		console.log(receivedData);
 		if(receivedData.status == "201"){
@@ -412,8 +414,7 @@ input::placeholder {
 		else
 		{
 			showModal2()
-		/* window.location.href = window.location.href = "http://localhost:8080/hospital/Login?sendNumber="
-			+ cusNumber; */
+		
 		}
 		console.log(data);
 		},
@@ -451,10 +452,15 @@ input::placeholder {
 		modal.setAttribute('aria-hidden', 'true');
 		modal.innerHTML = `
 		<div class="modal-dialog">
-		<div class="modal-content">
+		<div class="modal-content" style="
+            width: 535px; height:111px;
+        " >
 		<div class="modal-body">
-		<h3 class="modalHeading">You are an registered user please Login to continue </h3>
-		<button type="button" id="modal-cancel-btn" class="btn btn-secondary" data-bs-dismiss="modal" onclick="redirect1()">OKK</button>
+		<h3 class="modalHeading">You are an registered user please Login  </h3>
+		<button type="button" id="modal-cancel-btn" class="btn btn-secondary" data-bs-dismiss="modal" onclick="redirect1()" style="
+            position: absolute;
+        left: 225px;
+    ">OK</button>
 		</div>
 		</div>
 		</div>`;
@@ -475,10 +481,15 @@ input::placeholder {
 		modal.setAttribute('aria-hidden', 'true');
 		modal.innerHTML = `
 		<div class="modal-dialog">
-		<div class="modal-content">
+		<div class="modal-content" style="
+            width: 515px; height:111px;
+        " >
 		<div class="modal-body">
 		<h3 class="modalHeading">You are an registered successful </h3>
-		<button type="button" id="modal-cancel-btn" class="btn btn-secondary" data-bs-dismiss="modal" onclick="redirect2()">Ok</button>
+		<button type="button" id="modal-cancel-btn" class="btn btn-secondary" data-bs-dismiss="modal" onclick="redirect2()" style="
+            position: absolute;
+        left: 225px;
+    ">OK</button>
 		</div>
 		</div>
 		</div>`;
@@ -496,6 +507,8 @@ input::placeholder {
 	window.location.href="http://localhost:8080/hospital/Login";
 	}
 		
+	
+	
 	</script>
 
 
