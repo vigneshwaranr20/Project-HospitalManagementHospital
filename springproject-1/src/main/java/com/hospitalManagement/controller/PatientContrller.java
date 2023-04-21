@@ -57,6 +57,7 @@ public class PatientContrller {
 	public String listUsers2() {
 		return "Register";
 	}
+	@CrossOrigin
 	@PostMapping("/Register")
 	@ResponseBody
 	public String insertData(@RequestBody Map<String, Object> patients) {
@@ -87,7 +88,7 @@ public class PatientContrller {
 	public String listUsers4() {
 		return "PatientDetails";
 	}
-    
+    @CrossOrigin
 	@PostMapping("/AllDoctorsDetails")
 	@ResponseBody
 	public String patient() {
@@ -105,7 +106,7 @@ public class PatientContrller {
 		logger.info ("Appointment " + appointment.toString());
 		Map<String,Object> App=patientService.getAppointmentdata(appointment);	
 		String data2 = new Gson().toJson(App);
-		logger.info(data2);
+		logger.info("siva"+data2);
 		return data2;
 		
 	}
@@ -135,11 +136,9 @@ public class PatientContrller {
 	@ResponseBody
 	public String getHistory(@RequestBody Map<String,Object> showsummery)
 	{
-		logger.info("patientId"+showsummery);
 		Map<String,Object>patientData=patientService.getHistory1(showsummery);
-		logger.info("checking" + patientData);
 		String patientHistory=new Gson().toJson(patientData);
-		logger.info("checking" + patientHistory);
+	
 		return patientHistory;
 		
 	}
