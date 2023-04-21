@@ -182,7 +182,7 @@ public class PatientServiceImpl {
 			long Number=Long.valueOf(cusNumber);
 			List<Map<String,Object>>showpatient=patientRepository.getPatientId(Number);
 			int patient_id = (int) showpatient.get(0).get("patient_id");
-			logger.info("" + patient_id);
+			logger.info("vicky" + patient_id);
 			
 			
 		 Map<String ,Object> resultdata	=new HashMap<>();

@@ -32,11 +32,7 @@ public class DoctorEntity {
 	@Column(name = "status")
 	private String status;
 
-	@Column(name = "amount")
-	private int amount;
-
-	@Column(name = "no_of_appoinment")
-	private int no_of_appoinment;
+	
 
 	public DoctorEntity() {
 
@@ -48,8 +44,7 @@ public class DoctorEntity {
 		this.specialist = specialist;
 		this.mobile_number = mobile_number;
 		this.status = status;
-		this.amount = amount;
-		this.no_of_appoinment = no_of_appoinment;
+	
 	}	
 
 	public int getDoctor_id() {
@@ -92,20 +87,6 @@ public class DoctorEntity {
 		this.status = status;
 	}
 
-	public int getAmount() {
-		return amount;
-	}
-
-	public void setAmount(int amount) {
-		this.amount = amount;
-	}
-
-	public int getNo_of_appoinment() {
-		return no_of_appoinment;
-	}
-
-	public void setNo_of_appoinment(int no_of_appoinment) {
-		this.no_of_appoinment = no_of_appoinment;
-	}
+	
 
 }
