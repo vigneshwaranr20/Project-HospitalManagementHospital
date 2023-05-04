@@ -38,15 +38,7 @@ public class PatientServiceImpl {
 		return op;
 	}
 
-
-//	public Map<String, Object> getPatients() {
-//		Map<String, Object> p = new HashMap<>();
-//		List<Map<String, Object>> findData = patientRepository.queryResult();
-//		p.put("patient_details", findData);
-//		return p;
-//		
-//	}
-
+	//Register API
 	
 	public Map<String , Object> getAllPatients(@RequestBody Map<String, Object> patients)
 	{
@@ -57,7 +49,7 @@ public class PatientServiceImpl {
 
 
 		Long number2 = Long.valueOf(number);
-//		logger.info("Number" + number2);
+
 		List<Map<String, Object>> getData =patientRepository.getPhoneNumber(number2);
 	
 	       logger.info("result"+number2);
@@ -73,7 +65,7 @@ public class PatientServiceImpl {
 	return cs;
 	}
 
-
+	//Login API
 		public Map<String,Object> getAllData(Map<String,Object> Register)
 		{
 			String number = (String) Register.get("mobile_number");		
@@ -96,25 +88,25 @@ public class PatientServiceImpl {
 			}
 			return get;
 		}
+		//Get Doctor data from API
 		
 		public Map<String,Object> getData()
 		{
 			List<Map<String, Object>> result = doctorRepository.AllDoctorsDetails();
 			Map <String ,Object> data = new HashMap <>();
-			//String dataString = result.toString();
-			//logger.info("check"+dataString);
+			
 			data.put("doctor",result);
 			logger.info("check"+data);
 			return data;
 		}
-		
+		//Submit Appointment API
 		public Map<String,Object> getAppointmentdata(@RequestBody Map<String,Object> Appointments)
 	    {
 			
 		  long PatientMobileNumber = Long.valueOf((String)Appointments.get("mobile_number"));  
 	      String PatientName = (String) Appointments.get("name");
 	      String Patientdisease = (String) Appointments.get("disease");
-			/* String PatientGender = (String) Appointments.get("gender"); */
+			
 	      String PatientAge = (String) Appointments.get("age");
 	      String PatientAddress = (String) Appointments.get("address");
 	      String DoctorName = (String) Appointments.get("doctor_name");
@@ -129,7 +121,7 @@ public class PatientServiceImpl {
 	     
 	      
           logger.info("age = " + PatientAge);
-			/* long Number=Long.valueOf(PatientMobileNumber); */
+			
 			 
 	      int age=Integer.valueOf(PatientAge);
 	      
@@ -146,7 +138,7 @@ public class PatientServiceImpl {
 	        return p;
 	         
 	    }
-		
+		//Get Patient History API
 		public Map<String,Object> getDoctordata(Map <String , Object> schedule)
 		{
 			
@@ -168,6 +160,7 @@ public class PatientServiceImpl {
 			  logger.info("output" + value );
 		      return value;	
 		}
+		//Get Doctor&Specialist History API
 	      
 		public List<String>getSpecialistData ()
 		{

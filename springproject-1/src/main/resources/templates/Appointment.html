@@ -399,13 +399,7 @@ opacity: 1;
 				<input type="number" id="form4" placeholder="Patient Age" required> 
 				<input type="date" name="somedate" id="form5" placeholder="Date & Time">
 				<input type="text" id="form6"	placeholder="Patient Address" required> 
-				<!-- <select placeholder="Specialist" id="form7" > -->
-				<!--  <option style="background: white;color:black;" value="" disabled selected>Specialist</option> -->
-				 <!-- <option style="background: white;color:black;" value="Cardiologists">Cardiologists</option> 
-				  <option style="background: white;color:black;" value="Dermatologists">Dermatologists</option>
-				  <option style="background: white;color:black;" value="Endocrinologists">Endocrinologists</option>
-				  <option style="background: white;color:black;" value="Pediatricians">Pediatricians</option>
-				  <option style="background: white;color:black;" value="General Surgeons">General Surgeons</option> -->
+				
 				<select placeholder="Doctor Name" id="form10"> 
 				</select>				 
 				<input type="reset" id="form8" value="cancel"> 
@@ -419,86 +413,12 @@ opacity: 1;
 
 	</div>
 	
-<!-- 	<script > 
-    $(document).ready(function()
-    {
-    $("#form7").change(function() 
-   	{
-    var Specialist = $(this).val();
-    if (Specialist == "")
-    {
-      $("#form10").prop("disabled", true);
-    } 
-    else 
-    {
-      $("#form10").prop("disabled", false);
-      
-      if (Specialist == "Dermatologists")
-      {
-        $("#form10").html("<option style='background: white;color:black;' value=''>--Select--</option><option style='background: white;color:black;' value='Akash'>Akash</option>");
-      } 
-      else if (Specialist == "Endocrinologists") 
-      {
-        $("#form10").html("<option style='background: white;color:black;' value=''>--Select--</option><option style='background: white;color:black;' value='Anil'>Anil</option><option style='background: white;color:black;' value='Dhinesh'>Dhinesh</option>");
-      }
-      else if (Specialist == "Cardiologists") 
-      {
-          $("#form10").html("<option style='background: white;color:black;' value=''>--Select--</option><option style='background: white;color:black;' value='Mani'>Mani</option><option style='background: white;color:black;' value='Logesh'>Logesh</option>");
-      }
-      else if (Specialist == "Pediatricians") 
-      {
-          $("#form10").html("<option style='background: white;color:black;' value=''>--Select--</option><option style='background: white;color:black;' value='Prakash'>Prakash</option>");
-      }
-      else if (Specialist == "General Surgeons") 
-      {
-          $("#form10").html("<option style='background: white;color:black;' value=''>--Select--</option><option style='background: white;color:black;' value='Praveen'>Praveen</option><option style='background: white;color:black;' value='Rajesh'>Rajesh</option>");           
-      }
-    }  
-  });
-    });
-</script> -->
+
 <script type="text/javascript">
 
-var today = new Date().toISOString().split('T')[0];
-document.getElementsByName("somedate")[0].setAttribute('min', today);
-
-function dataForm() {
-	  // Get form values
-	  var name = document.getElementById("form2").value.trim();
-	  var disease = document.getElementById("form3").value.trim();
-	  var age = document.getElementById("form4").value;
-	  var datetime = document.getElementById("form5").value;
-	  var address = document.getElementById("form6").value.trim();
-	  // Validate name
-	  if (name === "") {
-	    console.log("Please enter patient name");
-	    return false;
-	  }
-	  // Validate disease
-	  if (disease === "") {
-	    console.log("Please enter patient disease");
-	    return false;
-	  }
-	  // Validate age
-	  if (isNaN(age) || age === "") {
-	    console.log("Please enter a valid patient age");
-	    return false;
-	  }
-	  // Validate date and time
-	  if (datetime === "") {
-	    console.log("Please select date and time");
-	    return false;
-	  }
-	  // Validate address
-	  if (address === "") {
-	    console.log("Please enter patient address");
-	    return false;
-	  }
-	  // If all fields are valid, submit the form
-	  return true;
-	}
 
 
+                               //Submit appointment data
 
     function dataFilter() {
       console.log("data");
@@ -545,7 +465,7 @@ function dataForm() {
         }
       });
     }
-    
+                                         //Get Doctor &specialist data
     specialistData();
 	/* debugger; */
     function specialistData() {
@@ -560,9 +480,9 @@ function dataForm() {
         success: function(data) {
           console.log(data);
 
-          /* var key = Object.keys(data); */
+          
           var map = data;
-			/* debugger; */
+			
           var dropdown = document.createElement("select");
           
           dropdown.id = "form7";
@@ -607,7 +527,7 @@ function dataForm() {
             	var value = {"specialist":specialist};
             	document.getElementById("form7").style.borderColor=("#FFFFFF");
             	
-            	/* document.getElementById("form10").innerHTML=""; */
+            	
               $.ajax({
                 type: "POST",
                 headers: {

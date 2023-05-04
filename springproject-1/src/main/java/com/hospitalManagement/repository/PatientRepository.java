@@ -13,8 +13,6 @@ import com.hospitalManagement.entity.PatientEntity;
 
 public interface PatientRepository extends JpaRepository<PatientEntity, Integer> {
 
-//	@Query(nativeQuery = true, value = "Select * from patient_details where mobile_number = '7397577541'")
-//	public List<Map<String, Object>> queryResult();
 
 	  @Modifying
 	  @Transactional
