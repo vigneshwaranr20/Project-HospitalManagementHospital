@@ -57,6 +57,8 @@ public class PatientContrller {
 	public String listUsers2() {
 		return "Register";
 	}
+	
+	                             //Register API
 	@CrossOrigin
 	@PostMapping("/Register")
 	@ResponseBody
@@ -73,7 +75,8 @@ public class PatientContrller {
 	@GetMapping("/Login")
 	public String listUsers3() {
 		return "Login";
-	}
+	}                       
+	                             //Log in API
     @CrossOrigin
 	@PostMapping("/Login")
 	@ResponseBody
@@ -88,6 +91,7 @@ public class PatientContrller {
 	public String listUsers4() {
 		return "PatientDetails";
 	}
+	                               //Get Doctor data from API
     @CrossOrigin
 	@PostMapping("/AllDoctorsDetails")
 	@ResponseBody
@@ -99,7 +103,8 @@ public class PatientContrller {
 		logger.info("CONTROL CHECK"+data);
 		return data;
 	}
-	
+                                   //Submit Appointment API
+	@CrossOrigin	
 	@PostMapping("/submitAppointment")
 	@ResponseBody
 	public String Schedule (@RequestBody Map<String ,Object> appointment) {
@@ -111,6 +116,8 @@ public class PatientContrller {
 		
 	}
 	
+	                         //Get Doctor Specialist API
+	@CrossOrigin
 	@PostMapping("/getDoctordata")
 	@ResponseBody
 	public String fetch (@RequestBody  Map<String , Object>  dr ) {
@@ -121,7 +128,7 @@ public class PatientContrller {
 		return doctorData;	
 		
 	}
-	
+	@CrossOrigin	
 	@PostMapping("/getSpecialistdata")
 	@ResponseBody
 	public String fetch1 () {		
@@ -131,32 +138,19 @@ public class PatientContrller {
 		return specialist;	
 		
 	}
-	
+	                            //Get Patient History API
+	@CrossOrigin
 	@PostMapping("/getHistoryData")
 	@ResponseBody
 	public String getHistory(@RequestBody Map<String,Object> showsummery)
 	{
 		Map<String,Object>patientData=patientService.getHistory1(showsummery);
 		String patientHistory=new Gson().toJson(patientData);
-	
+	    logger.info("check"+patientHistory);
 		return patientHistory;
 		
 	}
 	
-	/*
-	 * @PostMapping("/doctor")
-	 * 
-	 * @ResponseBody public String patient() { logger.info("output"); Map<String,
-	 * Object> history = patientService.getAllPatients(); String data = new
-	 * Gson().toJson(history); return data; } //
-	 *///	@PostMapping("/check")
-//	@ResponseBody
-//	public String queryResult() {
-//		logger.info("check");
-//		Map<String, Object> user = patientService.getPatients();
-//		String data2 = new Gson().toJson(user);
-//		return data2;
-//	}
 	
 	
 }
